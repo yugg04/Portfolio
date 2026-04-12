@@ -5,8 +5,7 @@ A modern, responsive portfolio website showcasing work as an **AI/ML Developer**
 ---
 
 ## 🌐 Live Demo
-
-👉 Visit Portfolio: 
+[![Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-7c3aed?style=for-the-badge&logo=vercel&logoColor=white)](https://yugg04.netlify.app/)
 
 ---
 
