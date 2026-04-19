@@ -34,44 +34,6 @@ A modern, responsive portfolio website showcasing work as an **AI/ML Developer**
 
 ---
 
-## 🛠️ Technologies Used
-
-### Core
-
-* HTML5
-* CSS3
-* JavaScript (ES6)
-
-### AI / ML
-
-* Machine Learning
-* Deep Learning
-* NLP
-
-### Backend
-
-* Python (FastAPI / Flask / Django)
-
-### Libraries
-
-* Pandas
-* NumPy
-* Scikit-learn
-* TensorFlow
-
-### Database
-
-* MongoDB
-* MySQL
-
-### Tools
-
-* Git
-* GitHub
-* Docker
-
----
-
 ## 📁 Project Structure
 
 ```bash
