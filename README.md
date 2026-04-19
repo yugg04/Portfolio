@@ -1,11 +1,14 @@
-# 🎨 Yug Khatri - Portfolio 
 
-A modern, responsive portfolio website showcasing work as an **AI/ML Developer** and **Python Developer**. Built with a clean structure and easy customization. 
+
+# 🎨 Yug Khatri - Portfolio
+
+A modern, responsive portfolio website showcasing work as an **AI/ML Developer** and **Python Developer**. Built with a clean structure and easy customization.
 
 ---
 
 ## 🌐 Live Demo
-[![Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-7c3aed?style=for-the-badge&logo=vercel&logoColor=white)](https://yugg04.netlify.app/)
+
+[![Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-7c3aed?style=for-the-badge\&logo=vercel\&logoColor=white)](https://yugkhatri04.vercel.app/)
 
 ---
 
@@ -217,9 +220,7 @@ Yug Khatri
 ## 🙏 Acknowledgments
 
 * Google Fonts
-* Netlify
+* Vercel
 * Open-source community
-
----
 
 
