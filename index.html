@@ -939,7 +939,7 @@ window.__PORTFOLIO_DATA__ = {
         <div class="cf-row">
           <div class="cf-field">
             <label class="cf-label" for="cf-name">Name <span class="cf-required">*</span></label>
-            <input class="cf-input" id="cf-name" type="text" placeholder="Your Name" autocomplete="name"/>
+            <input class="cf-input" id="cf-name" type="text" placeholder="Yug Khatri" autocomplete="name"/>
             <span class="cf-err" id="cf-name-err"></span>
           </div>
           <div class="cf-field">
@@ -965,14 +965,14 @@ window.__PORTFOLIO_DATA__ = {
 
         <div class="cf-msg" id="cf-success">
           <span class="cf-msg-ico">✅</span>
-          Message sent! I'll reply to your email within 24 hours.
+          Your email client has opened with the message pre-filled. Just hit Send!
         </div>
         <div class="cf-msg" id="cf-error">
           <span class="cf-msg-ico">⚠️</span>
           Something went wrong. Please email me directly at yugkhatri209@gmail.com
         </div>
 
-        <div class="cf-corner-tag">Powered by FormSubmit</div>
+
       </div>
     </div>
   </div>
@@ -1318,44 +1318,27 @@ function submitContactForm(){
   btn.classList.add('loading');
   btn.querySelector('.cf-submit-txt').textContent='Sending…';
 
-  // Use FormSubmit.co — no backend needed, free email relay
-  const fd=new FormData();
-  fd.append('name',name);
-  fd.append('email',email);
-  fd.append('subject',`[Portfolio] ${subject} — from ${name}`);
-  fd.append('message',message);
-  fd.append('_captcha','false');
-  fd.append('_template','box');
+  // Open mailto — works instantly, no backend or activation needed
+  const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+  const mailtoLink = `mailto:yugkhatri209@gmail.com?subject=${encodeURIComponent('Portfolio Message from ' + name)}&body=${encodeURIComponent(body)}`;
+  window.open(mailtoLink, '_blank');
 
-  fetch('https://formsubmit.co/ajax/yugkhatri209@gmail.com',{method:'POST',body:fd,headers:{Accept:'application/json'}})
-    .then(r=>r.json())
-    .then(data=>{
-      btn.classList.remove('loading');
-      if(data.success==='true'||data.success===true){
-        btn.querySelector('.cf-submit-txt').textContent='Message Sent!';
-        btn.querySelector('.cf-submit-ico').textContent='✓';
-        document.getElementById('cf-success').classList.add('success');
-        document.getElementById('cf-error').className='cf-msg';
-        // Reset after delay
-        setTimeout(()=>{
-          btn.querySelector('.cf-submit-txt').textContent='Send Message';
-          btn.querySelector('.cf-submit-ico').textContent='↗';
-          ['cf-name','cf-email','cf-msg'].forEach(id=>document.getElementById(id).value='');
-          document.getElementById('cf-subject').value='';
-          document.getElementById('cf-char').textContent='0 / 600';
-          document.getElementById('cf-success').className='cf-msg';
-        },5000);
-      } else {
-        throw new Error('Failed');
-      }
-    })
-    .catch(()=>{
-      btn.classList.remove('loading');
+  // Show success immediately
+  setTimeout(()=>{
+    btn.classList.remove('loading');
+    btn.querySelector('.cf-submit-txt').textContent='Message Sent!';
+    btn.querySelector('.cf-submit-ico').textContent='✓';
+    document.getElementById('cf-success').classList.add('success');
+    document.getElementById('cf-error').className='cf-msg';
+    // Reset after delay
+    setTimeout(()=>{
       btn.querySelector('.cf-submit-txt').textContent='Send Message';
       btn.querySelector('.cf-submit-ico').textContent='↗';
-      document.getElementById('cf-error').classList.add('error');
+      ['cf-name','cf-email','cf-msg'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('cf-char').textContent='0 / 600';
       document.getElementById('cf-success').className='cf-msg';
-    });
+    },5000);
+  }, 600);
 }
 
 // Clear invalid on input
