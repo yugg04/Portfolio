@@ -287,249 +287,69 @@ section{padding:120px 80px;}
 .c-open{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border:1px solid var(--bd2);color:var(--mu);font-family:'Space Grotesk',sans-serif;transition:all .25s;white-space:nowrap;}
 .clk:hover .c-open{border-color:var(--vl);color:var(--vl);background:rgba(124,58,237,.07);}
 
-/* ─── CONTACT US FORM SECTION ─── */
-#contact-form-section {
-  position: relative;
-  z-index: 5;
-  padding: 120px 80px;
-  background: linear-gradient(180deg, rgba(3,3,13,.4), rgba(8,8,26,.85));
-  backdrop-filter: blur(6px);
-  overflow: hidden;
+/* ─── UNIFIED CONTACT GRID ─── */
+.contact-unified-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:start;
 }
-#contact-form-section::before {
-  content: '';
-  position: absolute;
-  top: -180px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,58,237,.07) 0%, transparent 65%);
-  pointer-events: none;
-}
-.cf-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-.cf-grid {
-  display: block;
-}
-/* Form card */
-.cf-card {
-  background: rgba(8,8,26,.82);
-  border: 1px solid var(--bd);
-  padding: 40px 36px;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(16px);
-  transition: border-color .35s;
-}
-.cf-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--v), var(--pk), var(--t), var(--gl));
-}
-.cf-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 70% -10%, rgba(124,58,237,.09), transparent 60%);
-  pointer-events: none;
-}
-.cf-card:focus-within {
-  border-color: var(--bd2);
-  box-shadow: 0 0 60px rgba(124,58,237,.1);
-}
-.cf-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-.cf-field {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 1;
-}
-.cf-label {
-  font-size: 9px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--mu);
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.cf-required {
-  color: var(--pk);
-  font-size: 11px;
-}
-.cf-input, .cf-textarea, .cf-select {
-  width: 100%;
-  background: rgba(3,3,13,.7);
-  border: 1px solid var(--bd);
-  color: var(--tx);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  padding: 11px 14px;
-  outline: none;
-  transition: border-color .22s, box-shadow .22s, background .22s;
-  -webkit-appearance: none;
-}
-.cf-input::placeholder, .cf-textarea::placeholder {
-  color: rgba(78,76,112,.7);
-  font-size: 12px;
-}
-.cf-input:focus, .cf-textarea:focus, .cf-select:focus {
-  border-color: var(--vl);
-  background: rgba(8,8,26,.9);
-  box-shadow: 0 0 0 3px rgba(124,58,237,.1), inset 0 0 16px rgba(124,58,237,.03);
-}
-.cf-textarea {
-  resize: vertical;
-  min-height: 112px;
-  line-height: 1.7;
-}
-.cf-select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237c3aed' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px;
-}
-.cf-select option {
-  background: #08081a;
-  color: var(--tx);
-}
-.cf-char-count {
-  font-size: 9px;
-  color: var(--mu);
-  font-family: 'Space Grotesk', sans-serif;
-  text-align: right;
-  margin-top: -12px;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1;
-  transition: color .2s;
-}
-.cf-char-count.warn { color: var(--gl); }
-.cf-char-count.over { color: var(--pk); }
-.cf-submit {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, var(--v), var(--vd));
-  color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all .3s;
-  z-index: 1;
-  box-shadow: 0 0 28px rgba(124,58,237,.3);
-  margin-top: 6px;
-}
-.cf-submit::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--vl), var(--v));
-  opacity: 0;
-  transition: opacity .3s;
-}
-.cf-submit:hover::before { opacity: 1; }
-.cf-submit:hover {
-  box-shadow: 0 0 60px rgba(124,58,237,.6);
-  transform: translateY(-2px);
-}
-.cf-submit:active { transform: translateY(0); }
-.cf-submit-txt, .cf-submit-ico { position: relative; z-index: 1; }
-.cf-submit-ico {
-  font-size: 16px;
-  transition: transform .3s;
-}
-.cf-submit:hover .cf-submit-ico { transform: translate(3px, -2px); }
-.cf-submit.loading .cf-submit-txt::after {
-  content: '';
-  display: inline-block;
-  width: 14px; height: 14px;
-  border: 1.5px solid rgba(255,255,255,.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-  margin-left: 8px;
-  vertical-align: middle;
-}
-.cf-submit.loading .cf-submit-ico { display: none; }
+.contact-left{}
+.contact-right{}
 
-/* Success / Error states */
-.cf-msg {
-  display: none;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 18px;
-  border: 1px solid;
-  font-size: 12px;
-  font-family: 'Space Grotesk', sans-serif;
-  margin-top: 14px;
-  position: relative;
-  z-index: 1;
+/* ─── CONTACT FORM CARD ─── */
+.cf2-card{
+  background:rgba(8,8,26,.85);
+  border:1px solid var(--bd);
+  padding:36px 32px;
+  position:relative;overflow:hidden;
+  backdrop-filter:blur(16px);
+  transition:border-color .35s,box-shadow .35s;
 }
-.cf-msg.success {
-  display: flex;
-  background: rgba(16,185,129,.07);
-  border-color: rgba(16,185,129,.3);
-  color: #34D399;
+.cf2-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--v),var(--pk),var(--t),var(--gl));
 }
-.cf-msg.error {
-  display: flex;
-  background: rgba(236,72,153,.07);
-  border-color: rgba(236,72,153,.3);
-  color: #F472B6;
+.cf2-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% -10%,rgba(124,58,237,.07),transparent 60%);
+  pointer-events:none;
 }
-.cf-msg-ico { font-size: 16px; flex-shrink: 0; }
-
-/* Field error hint */
-.cf-err {
-  font-size: 9.5px;
-  color: var(--pk);
-  font-family: 'Space Grotesk', sans-serif;
-  min-height: 13px;
-  position: relative;
-  z-index: 1;
+.cf2-card:focus-within{border-color:var(--bd2);box-shadow:0 0 60px rgba(124,58,237,.1);}
+.cf2-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.cf2-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;position:relative;z-index:1;}
+.cf2-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);font-family:'Space Grotesk',sans-serif;font-weight:600;display:flex;align-items:center;gap:4px;}
+.cf2-req{color:var(--pk);font-size:11px;}
+.cf2-input,.cf2-textarea{
+  width:100%;background:rgba(3,3,13,.7);border:1px solid var(--bd);
+  color:var(--tx);font-family:'Space Grotesk',sans-serif;font-size:13px;
+  padding:11px 14px;outline:none;
+  transition:border-color .22s,box-shadow .22s,background .22s;-webkit-appearance:none;
 }
-.cf-input.invalid, .cf-textarea.invalid, .cf-select.invalid {
-  border-color: rgba(236,72,153,.5);
+.cf2-input::placeholder,.cf2-textarea::placeholder{color:rgba(78,76,112,.6);font-size:12px;}
+.cf2-input:focus,.cf2-textarea:focus{border-color:var(--vl);background:rgba(8,8,26,.9);box-shadow:0 0 0 3px rgba(124,58,237,.1),inset 0 0 16px rgba(124,58,237,.03);}
+.cf2-textarea{resize:vertical;min-height:110px;line-height:1.7;}
+.cf2-input.iv,.cf2-textarea.iv{border-color:rgba(236,72,153,.5);}
+.cf2-err{font-size:9.5px;color:var(--pk);font-family:'Space Grotesk',sans-serif;min-height:13px;}
+.cf2-char{font-size:9px;color:var(--mu);font-family:'Space Grotesk',sans-serif;text-align:right;margin-top:-10px;margin-bottom:8px;position:relative;z-index:1;transition:color .2s;}
+.cf2-char.warn{color:var(--gl);}.cf2-char.over{color:var(--pk);}
+.cf2-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 44px;
+  background:linear-gradient(135deg,var(--v),var(--vd));color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;
+  position:relative;overflow:hidden;transition:all .3s;
+  box-shadow:0 0 28px rgba(124,58,237,.3);margin-top:6px;
 }
-
-/* Decorative corner tag */
-.cf-corner-tag {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  font-size: 8.5px;
-  letter-spacing: .14em;
-  color: var(--mu);
-  font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  opacity: .5;
-  z-index: 1;
-}
+.cf2-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--vl),var(--v));opacity:0;transition:opacity .3s;}
+.cf2-btn:hover::before{opacity:1;}.cf2-btn:hover{box-shadow:0 0 60px rgba(124,58,237,.6);transform:translateY(-2px);}
+.cf2-btn:active{transform:translateY(0);}.cf2-btn:disabled{opacity:.6;cursor:default;transform:none;}
+.cf2-btn-txt,.cf2-btn-ico{position:relative;z-index:1;}
+.cf2-btn-ico{font-size:15px;transition:transform .3s;}.cf2-btn:hover .cf2-btn-ico{transform:translate(3px,-2px);}
+.cf2-success{display:none;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.07);color:#34D399;font-size:12px;font-family:'Space Grotesk',sans-serif;margin-top:14px;position:relative;z-index:1;}
+.cf2-success.show{display:flex;}
+.cf2-corner{position:absolute;bottom:14px;right:16px;font-size:8px;letter-spacing:.14em;color:var(--mu);font-family:'Space Grotesk',sans-serif;text-transform:uppercase;opacity:.4;z-index:1;}
 
 /* ─── FOOTER ─── */
 footer{padding:30px 80px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:5;backdrop-filter:blur(8px);background:rgba(3,3,13,.6);}
@@ -549,7 +369,8 @@ footer{padding:30px 80px;border-top:1px solid var(--bd);display:flex;justify-con
 @media(max-width:960px){
   nav{padding:14px 24px;}nav.sc{padding:11px 24px;}
   .nlinks{display:none;}.ham{display:flex;}
-  section,.po-sect,#resume,#contact-form-section{padding:72px 24px;}
+  section,.po-sect,#resume{padding:72px 24px;}
+  #contact{padding:72px 24px!important;}
   #home{padding:88px 24px 56px;}
   .hsc{left:24px;}.dvl{margin:0 24px;}
   .po-grid{grid-template-columns:1fr;gap:32px;}
@@ -560,102 +381,89 @@ footer{padding:30px 80px;border-top:1px solid var(--bd);display:flex;justify-con
   .sdts,.hire{display:none;}
   footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center;}
   body{cursor:auto;}#cdot,#cring{display:none;}
-  .cf-row{grid-template-columns:1fr;}
+  .cf2-row{grid-template-columns:1fr;}
+  .contact-unified-grid{grid-template-columns:1fr;gap:36px;}
 }
 @media(max-width:540px){
   .h-btns{flex-direction:column;}.bp,.bg{justify-content:center;}
   .cert-grid{grid-template-columns:1fr;}
   .rff{flex-direction:column;gap:9px;}
   .tkr{display:none;}nav{top:0;}
-  .cf-card{padding:28px 20px;}
+  .cf2-card{padding:24px 18px;}
 }
 </style>
 </head>
 <body>
 
-
 <script id="portfolio-data-src">
-
 const PROFILE = {
   name:    "Yug Khatri",
   field:   "AI/ML Developer",
   tagline: "Building intelligent digital experiences at the intersection of AI, data, and code. Fresher. Curious. Ready to create impact."
 };
 
-
-
-
 const OVERVIEW = {
   loc: "India · Open to Remote",
-
   ministats: [],
-
   focus: [
     { icon: "🤖", title: "Machine Learning",    desc: "Building & training ML/DL models for real-world problems." },
     { icon: "🧠", title: "Deep Learning & NLP", desc: "Neural networks, transformers, language models & NLP pipelines." },
     { icon: "⚡", title: "Backend APIs",         desc: "FastAPI, Flask, Django — scalable REST APIs & microservices." },
     { icon: "📊", title: "Data Science",         desc: "EDA, feature engineering, model deployment & analytics." },
-    { icon: "✨", title: "Generative AI",       desc: "LLMs, RAG pipelines, prompt engineering, and AI-powered applications." },
+    { icon: "✨", title: "Generative AI",        desc: "LLMs, RAG pipelines, prompt engineering, and AI-powered applications." },
   ],
-
- 
   showTimeline: true,
-
   timeline: [
-    { yr: "2026", title: "AI & ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows & projects", tag: "Experience" }   
+    { yr: "2026", title: "AI & ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows & projects", tag: "Experience" }
   ]
-  
 };
 
-
 const PROJECTS = [
-   {
+  {
     title: "🎬 Cinelexis — GenAI Movie Data Extractor",
     desc:  "AI-powered movie data extraction system that converts unstructured text into clean, structured JSON using LLMs (Mistral via LangChain). It leverages Pydantic schemas for validation and extracts key details like title, genre, cast, director, rating, and summary. Built with a Streamlit UI and a robust backend parsing pipeline for reliable and scalable processing.",
     tags:  ["Python","LangChain","Mistral AI","Pydantic","Streamlit"],
     gh:    "https://github.com/yugg04/cinelexis-movie-extractor",
     lv:    "https://cinelexis-movie-extractor-04.streamlit.app/"
   },
-   {
-    title: "📚 Docnify — AI Document Readerr",
-    desc:  "Docnify is a RAG-based application that allows users to upload PDFs and ask questions in natural language.It retrieves relevant document chunks using ChromaDB and generates context-aware answers with Mistral AI.Built using LangChain and Python, it demonstrates an end-to-end document querying pipeline.It also provides a Streamlit chat interface with source visibility for better transparency.",
-    tags: ["Python","LangChain","Mistral AI","ChromaDB","Streamlit"],
+  {
+    title: "📚 Docnify — AI Document Reader",
+    desc:  "Docnify is a RAG-based application that allows users to upload PDFs and ask questions in natural language. It retrieves relevant document chunks using ChromaDB and generates context-aware answers with Mistral AI. Built using LangChain and Python, it demonstrates an end-to-end document querying pipeline. It also provides a Streamlit chat interface with source visibility for better transparency.",
+    tags:  ["Python","LangChain","Mistral AI","ChromaDB","Streamlit"],
     gh:    "https://github.com/yugg04/Docnify-RAG-Reader",
     lv:    "https://docnify-rag-reader-04.streamlit.app/"
   },
   {
     title: "🌱 Crop Recommendation System",
-    desc:  "Web-based decision support system for crop selection\nUses machine learning (scikit-learn) for       predictions\nInputs: N, P, K, temperature, humidity, pH, rainfall\nOutputs ranked crop recommendations\nReact frontend + Spring Boot backend + Python ML service\nIncludes input validation and clean UI",
-    tags:  ["Python", "Machine Learning"],
+    desc:  "Web-based decision support system for crop selection. Uses machine learning (scikit-learn) for predictions. Inputs: N, P, K, temperature, humidity, pH, rainfall. Outputs ranked crop recommendations. React frontend + Spring Boot backend + Python ML service. Includes input validation and clean UI.",
+    tags:  ["Python","Machine Learning"],
     gh:    "https://github.com/yugg04/crop_recommendation_system",
     lv:    "https://agrosmart-iota.vercel.app/"
   },
-   {
+  {
     title: "🏥 Carelytics – Patient Health Intelligence Platform",
     desc:  "Carelytics is a full-stack healthcare dashboard built with FastAPI that combines a modern frontend UI and a REST API in a single deployment. It allows users to manage patient records with CRUD operations while automatically calculating BMI and generating health verdicts. The app features a clean, responsive interface and demonstrates real-world backend–frontend integration with simple deployment on Render.",
-    tags:  ["FastAPI", "Python", "Render"],
+    tags:  ["FastAPI","Python","Render"],
     gh:    "https://github.com/yugg04/Patient_management_system-Fastapi",
     lv:    "https://patient-management-system-fastapi-1.onrender.com/"
   },
   {
     title: "😊 NeuroPulse – AI Powered Emotion Sense",
-    desc:  "NLP-based system to detect human emotions from text\nUses TF-IDF + Logistic Regression for classification\nReal-time predictions via Streamlit UI\nLightweight and fast ML pipeline deployment",
-    tags:  ["Scikit-learn", "Python", "NLTK","Streamlit"],
+    desc:  "NLP-based system to detect human emotions from text. Uses TF-IDF + Logistic Regression for classification. Real-time predictions via Streamlit UI. Lightweight and fast ML pipeline deployment.",
+    tags:  ["Scikit-learn","Python","NLTK","Streamlit"],
     gh:    "https://github.com/yugg04/NeuroPulse-Ai-powered-emotion-sense",
     lv:    "https://neuropulse-ai-powered-emotion-sense-yk.streamlit.app/"
   },
   {
     title: "❤️ Heart & Stroke Prediction App",
     desc:  "A simple machine learning web app that predicts the risk of heart disease or stroke based on basic medical inputs like age, blood pressure, cholesterol, and heart rate. Built with Streamlit, it uses a KNN model with scaled inputs to provide quick risk predictions through an interactive interface.",
-    tags:  ["Python", "Scikit-learn", "Streamlit"],
+    tags:  ["Python","Scikit-learn","Streamlit"],
     gh:    "https://github.com/yugg04/Heart_stroke_prediction",
     lv:    "https://heartstrokeprediction-yk.streamlit.app/"
   },
 ];
 
-
 const SKILLS = [
-  /* ── AI / ML ── */
   { name: "Machine Learning",  icon: "🤖", cat: "ai" },
   { name: "Deep Learning",     icon: "🧠", cat: "ai" },
   { name: "NLP",               icon: "💬", cat: "ai" },
@@ -665,46 +473,31 @@ const SKILLS = [
   { name: "n8n",               icon: "⚡", cat: "ai" },
   { name: "Data Analysis",     icon: "📊", cat: "ai" },
   { name: "Model Deployment",  icon: "🚀", cat: "ai" },
-
-  /* ── Python Frameworks ── */
-  { name: "Python",            icon: "🐍", cat: "py"    },
-  { name: "FastAPI",           icon: "⚡", cat: "py"    },
-  { name: "Flask",             icon: "🌶", cat: "py"    },
-  { name: "Django",            icon: "🎸", cat: "py"    },
-  { name: "Streamlit",         icon: "📈", cat: "py"    },
-  { name: "REST APIs",         icon: "🔗", cat: "py"    },
-
-  /* ── Web Technologies ── */
-  { name: "HTML",              icon: "🌐", cat: "web"   },
-  { name: "CSS",               icon: "🎨", cat: "web"   },
-  { name: "JavaScript",        icon: "⚡", cat: "web"   },
-
-  /* ── Data Libraries ── */
-  { name: "Pandas",            icon: "🐼", cat: "lib"   },
-  { name: "NumPy",             icon: "🔢", cat: "lib"   },
-  { name: "Scikit-learn",      icon: "🔬", cat: "lib"   },
-  { name: "TensorFlow",        icon: "🧮", cat: "lib"   },
-
-  /* ── Databases ── */
-  { name: "MongoDB",           icon: "🍃", cat: "db"    },
-  { name: "MySQL",             icon: "🗄",  cat: "db"    },
-
-  /* ── DevOps & Tools ── */
+  { name: "Python",            icon: "🐍", cat: "py" },
+  { name: "FastAPI",           icon: "⚡", cat: "py" },
+  { name: "Flask",             icon: "🌶", cat: "py" },
+  { name: "Django",            icon: "🎸", cat: "py" },
+  { name: "Streamlit",         icon: "📈", cat: "py" },
+  { name: "REST APIs",         icon: "🔗", cat: "py" },
+  { name: "HTML",              icon: "🌐", cat: "web" },
+  { name: "CSS",               icon: "🎨", cat: "web" },
+  { name: "JavaScript",        icon: "⚡", cat: "web" },
+  { name: "Pandas",            icon: "🐼", cat: "lib" },
+  { name: "NumPy",             icon: "🔢", cat: "lib" },
+  { name: "Scikit-learn",      icon: "🔬", cat: "lib" },
+  { name: "TensorFlow",        icon: "🧮", cat: "lib" },
+  { name: "MongoDB",           icon: "🍃", cat: "db" },
+  { name: "MySQL",             icon: "🗄",  cat: "db" },
   { name: "Docker",            icon: "🐳", cat: "tools" },
   { name: "Git",               icon: "⑂",  cat: "tools" },
   { name: "GitHub",            icon: "🐙", cat: "tools" }
 ];
 
-
 const CERTS = [
-  { icon: "📘", name: "Python for Data Science", issuer: "NPTEL", date: "2025", url: "", verified: true  },
-  { icon: "🤖", name: "Artificial Intelligence Fundamentals",    issuer: "IBM",       date: "2026", url: "", verified: true  },
-  { icon: "💼", name: "AI & ML Internship",       issuer: "All India Council for Technical Education / Edunet Foundation",        date: "2026", url: "", verified: true  },
- 
+  { icon: "📘", name: "Python for Data Science",           issuer: "NPTEL",  date: "2025", url: "", verified: true },
+  { icon: "🤖", name: "Artificial Intelligence Fundamentals", issuer: "IBM", date: "2026", url: "", verified: true },
+  { icon: "💼", name: "AI & ML Internship",                issuer: "All India Council for Technical Education / Edunet Foundation", date: "2026", url: "", verified: true },
 ];
-
-
-
 
 const CONTACT = {
   email:       "yugkhatri209@gmail.com",
@@ -715,7 +508,6 @@ const CONTACT = {
   resumeUrl:   "https://drive.google.com/file/d/1vmXkfDna6a4vTMkeesrCiV-TONdNuCKx/view?usp=sharing",
   resumeLabel: "Download Resume"
 };
-
 
 window.__PORTFOLIO_DATA__ = {
   profile:  PROFILE,
@@ -762,7 +554,7 @@ window.__PORTFOLIO_DATA__ = {
   <a href="#certs"    onclick="cMob()">Certs</a>
   <a href="#resume"   onclick="cMob()">Resume</a>
   <a href="#contact"  onclick="cMob()">Contact</a>
-  <a href="#contact-form-section" onclick="cMob()">Message Me</a>
+  <a href="#contact" onclick="cMob()">Message Me</a>
 </div>
 
 <!-- NAV -->
@@ -775,7 +567,7 @@ window.__PORTFOLIO_DATA__ = {
     <li><a href="#certs">Certificates</a></li>
     <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact-form-section" style="color:var(--vl)">Message Me</a></li>
+    <li><a href="#contact" style="color:var(--vl)">Message Me</a></li>
   </ul>
   <div class="ham" id="ham"><span></span><span></span><span></span></div>
 </nav>
@@ -788,9 +580,8 @@ window.__PORTFOLIO_DATA__ = {
   <div class="sdt"    data-s="certs"    onclick="location.href='#certs'"></div>
   <div class="sdt"    data-s="resume"   onclick="location.href='#resume'"></div>
   <div class="sdt"    data-s="contact"  onclick="location.href='#contact'"></div>
-  <div class="sdt"    data-s="contact-form-section" onclick="location.href='#contact-form-section'"></div>
 </div>
-<a class="hire" id="hire" href="#contact-form-section"><div class="hdot"></div>Hire Me</a>
+<a class="hire" id="hire" href="#contact"><div class="hdot"></div>Hire Me</a>
 
 <!-- HERO -->
 <div id="home">
@@ -800,7 +591,7 @@ window.__PORTFOLIO_DATA__ = {
   <p class="h-desc" id="htag">Building intelligent digital experiences at the intersection of AI, data, and code.</p>
   <div class="h-btns">
     <a href="#projects" class="bp"><span>View Work</span><span>→</span></a>
-    <a href="#contact-form-section"  class="bg">Get in Touch</a>
+    <a href="#contact" class="bg">Get in Touch</a>
   </div>
   <div class="hsc"><div class="hsl"></div>Scroll</div>
 </div>
@@ -915,19 +706,80 @@ window.__PORTFOLIO_DATA__ = {
 </section>
 <div class="dvl"></div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="cin">
-    <div class="stag rv">Get in Touch</div>
-    <h2 class="shead rv d1">Let's <em>connect</em></h2>
-    <p class="cintro rv d2" id="cintro">Whether it's an internship, AI collaboration, or just a conversation — I'd love to hear from you.</p>
-    <div class="cloc rv d2"><span style="font-size:17px">📍</span><span class="cloc-txt"><strong id="cloc-val">Ahmedabad, Gujarat, India</strong> &nbsp;·&nbsp; Open to Remote</span></div>
-    <div class="clks rv d3" id="clks"></div>
+<!-- CONTACT — unified section -->
+<section id="contact" style="padding:100px 80px;position:relative;z-index:5;backdrop-filter:blur(4px);background:rgba(3,3,13,.4);">
+
+  <div class="stag rv">Get in Touch</div>
+  <h2 class="shead rv d1" style="margin-bottom:48px;">Let's <em>connect</em></h2>
+
+  <!-- two-column layout -->
+  <div class="contact-unified-grid rv d2">
+
+    <!-- LEFT: info -->
+    <div class="contact-left">
+      <p class="cintro rv" id="cintro" style="margin-bottom:28px;">Whether it's an internship, AI collaboration, or a conversation about technology — I'd love to hear from you.</p>
+
+      <div class="cloc rv" style="margin-bottom:12px;">
+        <span style="font-size:17px">📍</span>
+        <span class="cloc-txt"><strong id="cloc-val">Gandhinagar, Gujarat, India</strong> &nbsp;·&nbsp; Open to Remote</span>
+      </div>
+
+      <div class="clks rv d2" id="clks"></div>
+
+      <!-- availability badge -->
+      <div style="margin-top:24px;display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.22);padding:8px 16px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#34D399;box-shadow:0 0 8px #34D399;flex-shrink:0;animation:bk 2s infinite;display:inline-block;"></span>
+        <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#34D399;font-family:'Space Grotesk',sans-serif;">Available for Work</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="contact-right rv d3">
+      <div class="cf2-card">
+
+        <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--vl);font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:22px;">// send a message</div>
+
+        <div class="cf2-row">
+          <div class="cf2-field">
+            <label class="cf2-label" for="cf2-name">Name <span class="cf2-req">*</span></label>
+            <input class="cf2-input" id="cf2-name" type="text" placeholder="Your name" autocomplete="name"/>
+            <div class="cf2-err" id="cf2-name-err"></div>
+          </div>
+          <div class="cf2-field">
+            <label class="cf2-label" for="cf2-email">Email <span class="cf2-req">*</span></label>
+            <input class="cf2-input" id="cf2-email" type="email" placeholder="you@example.com" autocomplete="email"/>
+            <div class="cf2-err" id="cf2-email-err"></div>
+          </div>
+        </div>
+
+        <div class="cf2-field">
+          <label class="cf2-label" for="cf2-subject">Subject</label>
+          <input class="cf2-input" id="cf2-subject" type="text" placeholder="Internship · Collaboration · Just saying hi"/>
+        </div>
+
+        <div class="cf2-field">
+          <label class="cf2-label" for="cf2-msg">Message <span class="cf2-req">*</span></label>
+          <textarea class="cf2-textarea" id="cf2-msg" placeholder="Tell me what you're working on…"></textarea>
+          <div class="cf2-err" id="cf2-msg-err"></div>
+        </div>
+        <div class="cf2-char" id="cf2-char">0 / 600</div>
+
+        <button class="cf2-btn" id="cf2-submit" onclick="submitCF2()">
+          <span class="cf2-btn-txt">Send Message</span>
+          <span class="cf2-btn-ico">↗</span>
+        </button>
+
+        <div class="cf2-success" id="cf2-success">
+          <span>✓</span>&nbsp; Message sent! I'll get back to you soon.
+        </div>
+
+        <div class="cf2-corner">// open to opportunities</div>
+      </div>
+    </div>
+
   </div>
 </section>
 <div class="dvl"></div>
-
-
 
 <footer>
   <span class="flo">Y<span class="ac">K</span></span>
@@ -1084,7 +936,7 @@ function xe(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').r
   if(c.resumeUrl){const r=document.getElementById('rdl');r.href=c.resumeUrl;r.target='_blank';}
 
   document.getElementById('cintro').textContent = c.intro;
-  document.getElementById('cloc-val').textContent = c.location||'Ahmedabad, Gujarat, India';
+  document.getElementById('cloc-val').textContent = c.location||'Gandhinagar, Gujarat, India';
   const lnu=c.linkedin.startsWith('http')?c.linkedin:'https://'+c.linkedin;
   const ghu=c.github.startsWith('http')?c.github:'https://'+c.github;
   document.getElementById('clks').innerHTML=`
@@ -1135,7 +987,7 @@ function initTilt(){
 
 /* ══ MAGNETIC ══ */
 function initMag(){
-  document.querySelectorAll('.bp,.bg,.rdl,.cf-submit').forEach(b=>{
+  document.querySelectorAll('.bp,.bg,.rdl,.cf2-btn').forEach(b=>{
     b.addEventListener('mouseenter',()=>b.style.transition='transform .1s');
     b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.28}px,${(e.clientY-r.top-r.height/2)*.36}px) translateY(-2px)`;});
     b.addEventListener('mouseleave',()=>{b.style.transition='transform .5s cubic-bezier(.25,1,.5,1)';b.style.transform='';});
@@ -1152,8 +1004,9 @@ function initMag(){
   addEventListener('mousedown',()=>{dot.classList.add('big');ring.classList.add('big');dot.style.background='var(--tl)';});
   addEventListener('mouseup',()=>{dot.classList.remove('big');ring.classList.remove('big');dot.style.background='var(--vl)';});
 })();
+
 function initHoverCur(){
-  document.querySelectorAll('a,button,.pc,.sk-pill,.poc,.cc-card,.clk,.rdl,.pof,.pt-item,.pm-item,.cf-input,.cf-textarea,.cf-select,.cf-submit,.cf-info-item').forEach(el=>{
+  document.querySelectorAll('a,button,.pc,.sk-pill,.poc,.cc-card,.clk,.rdl,.pof,.pt-item,.pm-item,.cf2-input,.cf2-textarea,.cf2-btn').forEach(el=>{
     el.addEventListener('mouseenter',()=>{document.getElementById('cdot')?.classList.add('big');document.getElementById('cring')?.classList.add('big');});
     el.addEventListener('mouseleave',()=>{document.getElementById('cdot')?.classList.remove('big');document.getElementById('cring')?.classList.remove('big');});
   });
@@ -1176,7 +1029,7 @@ document.getElementById('ham').addEventListener('click',()=>{
 function cMob(){document.getElementById('ham').classList.remove('op');document.getElementById('mm').classList.remove('op');document.body.style.overflow='';}
 
 /* ══ SCROLL ══ */
-const SECS=['home','about','skills','projects','certs','resume','contact','contact-form-section'];
+const SECS=['home','about','skills','projects','certs','resume','contact'];
 function onScroll(){
   const st=scrollY,dh=document.documentElement.scrollHeight-innerHeight;
   document.getElementById('sp').style.width=(st/dh*100)+'%';
@@ -1229,74 +1082,97 @@ function handleRes(e){
 }
 function showNotif(msg){const n=document.getElementById('notif');n.textContent=msg;n.classList.add('sh');setTimeout(()=>n.classList.remove('sh'),3400);}
 
-/* ══ CONTACT FORM ══ */
-// Character counter
-(function(){
-  const ta=document.getElementById('cf-msg'),cc=document.getElementById('cf-char');
-  if(!ta||!cc)return;
-  ta.addEventListener('input',()=>{
-    const len=ta.value.length,max=600;
-    cc.textContent=`${len} / ${max}`;
-    cc.classList.toggle('warn',len>400&&len<=560);
-    cc.classList.toggle('over',len>560);
-  });
-})();
 
-function validateForm(){
-  let ok=true;
-  const fields=[
-    {id:'cf-name',  err:'cf-name-err',  msg:'Please enter your name.',      test:v=>v.trim().length>=2},
-    {id:'cf-email', err:'cf-email-err', msg:'Please enter a valid email.',   test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())},
+const WEB3FORMS_KEY = '79a2ef22-23c3-40c2-b1c2-60d1a44bb053'; 
 
-    {id:'cf-msg',   err:'cf-msg-err',   msg:'Message must be at least 10 characters.', test:v=>v.trim().length>=10},
-  ];
-  fields.forEach(f=>{
-    const el=document.getElementById(f.id),er=document.getElementById(f.err);
-    if(!f.test(el.value)){el.classList.add('invalid');er.textContent=f.msg;ok=false;}
-    else{el.classList.remove('invalid');er.textContent='';}
-  });
-  return ok;
-}
-
-function submitContactForm(){
-  if(!validateForm())return;
-  const btn=document.getElementById('cf-submit');
-  const name   =document.getElementById('cf-name').value.trim();
-  const email  =document.getElementById('cf-email').value.trim();
-  const subject='Portfolio Message';
-  const message=document.getElementById('cf-msg').value.trim();
-  btn.classList.add('loading');
-  btn.querySelector('.cf-submit-txt').textContent='Sending…';
-
-// Open mailto — works instantly, no backend or activation needed
-  const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-  const mailtoLink = `mailto:yugkhatri209@gmail.com?subject=${encodeURIComponent('Portfolio Message from ' + name)}&body=${encodeURIComponent(body)}`;
-  window.open(mailtoLink, '_blank');
-
-  // Show success immediately
-  setTimeout(()=>{
-    btn.classList.remove('loading');
-    btn.querySelector('.cf-submit-txt').textContent='Message Sent!';
-    btn.querySelector('.cf-submit-ico').textContent='✓';
-    document.getElementById('cf-success').classList.add('success');
-    document.getElementById('cf-error').className='cf-msg';
-    // Reset after delay
-    setTimeout(()=>{
-      btn.querySelector('.cf-submit-txt').textContent='Send Message';
-      btn.querySelector('.cf-submit-ico').textContent='↗';
-      ['cf-name','cf-email','cf-msg'].forEach(id=>document.getElementById(id).value='');
-      document.getElementById('cf-char').textContent='0 / 600';
-      document.getElementById('cf-success').className='cf-msg';
-    },5000);
-  }, 600);
-}
-
-// Clear invalid on input
-['cf-name','cf-email','cf-msg'].forEach(id=>{
-  const el=document.getElementById(id);if(!el)return;
-  el.addEventListener('input',()=>{el.classList.remove('invalid');document.getElementById(id+'-err').textContent='';});
+document.getElementById('cf2-msg').addEventListener('input',function(){
+  const len=this.value.length,max=600;
+  const cc=document.getElementById('cf2-char');
+  cc.textContent=len+' / '+max;
+  cc.classList.toggle('warn',len>400&&len<=560);
+  cc.classList.toggle('over',len>560);
 });
 
+['cf2-name','cf2-email','cf2-msg'].forEach(function(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.addEventListener('input',function(){
+    el.classList.remove('iv');
+    document.getElementById(id+'-err').textContent='';
+  });
+});
+
+async function submitCF2(){
+  const name  = document.getElementById('cf2-name');
+  const email = document.getElementById('cf2-email');
+  const subj  = document.getElementById('cf2-subject');
+  const msg   = document.getElementById('cf2-msg');
+  let ok = true;
+
+  ['cf2-name','cf2-email','cf2-msg'].forEach(function(id){
+    document.getElementById(id).classList.remove('iv');
+    document.getElementById(id+'-err').textContent='';
+  });
+
+  if(name.value.trim().length < 2){
+    name.classList.add('iv');
+    document.getElementById('cf2-name-err').textContent='Please enter your name.';
+    ok=false;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+    email.classList.add('iv');
+    document.getElementById('cf2-email-err').textContent='Please enter a valid email.';
+    ok=false;
+  }
+  if(msg.value.trim().length < 10){
+    msg.classList.add('iv');
+    document.getElementById('cf2-msg-err').textContent='Message must be at least 10 characters.';
+    ok=false;
+  }
+  if(!ok)return;
+
+  const btn=document.getElementById('cf2-submit');
+  btn.querySelector('.cf2-btn-txt').textContent='Sending…';
+  btn.querySelector('.cf2-btn-ico').textContent='';
+  btn.disabled=true;
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        name: name.value.trim(),
+        email: email.value.trim(),
+        subject: 'Portfolio Message from ' + name.value.trim() + (subj.value.trim() ? ' — ' + subj.value.trim() : ''),
+        message: msg.value.trim(),
+        from_name: name.value.trim(),
+        replyto: email.value.trim(),
+        botcheck: ''
+      })
+    });
+    const data = await res.json();
+    if(!data.success) throw new Error(data.message || 'Failed');
+
+    // Success
+    btn.querySelector('.cf2-btn-txt').textContent='Sent!';
+    btn.querySelector('.cf2-btn-ico').textContent='✓';
+    document.getElementById('cf2-success').classList.add('show');
+    name.value=''; email.value=''; subj.value=''; msg.value='';
+    document.getElementById('cf2-char').textContent='0 / 600';
+    setTimeout(function(){
+      btn.querySelector('.cf2-btn-txt').textContent='Send Message';
+      btn.querySelector('.cf2-btn-ico').textContent='↗';
+      btn.disabled=false;
+      document.getElementById('cf2-success').classList.remove('show');
+    },5000);
+
+  } catch(err){
+    btn.querySelector('.cf2-btn-txt').textContent='Send Message';
+    btn.querySelector('.cf2-btn-ico').textContent='↗';
+    btn.disabled=false;
+    showNotif('Could not send — try emailing directly: yugkhatri209@gmail.com');
+  }
+}
 </script>
 </body>
 </html>
