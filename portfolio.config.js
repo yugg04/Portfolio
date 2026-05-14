@@ -170,6 +170,17 @@ window.PORTFOLIO_CONFIG = {
   leetcode: {
     url: "",
     username: "",
-    highlights: []
+    highlights: [],
+    fallback: {
+      totalSolved: 0,
+      easySolved: 0,
+      mediumSolved: 0,
+      hardSolved: 0,
+      ranking: "-",
+      acceptanceRate: "-",
+      contributionPoints: 0,
+      contestRating: "-",
+      streak: "-"
+    }
   }
 };
