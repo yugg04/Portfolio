@@ -1467,12 +1467,13 @@ section,
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(4, 1fr);
-  margin-bottom: 28px;
+  margin-bottom: 14px;
 }
 
 .gh-stat,
 .gh-langs-wrap,
-.gh-contrib-wrap {
+.gh-contrib-wrap,
+.lc-card {
   background: var(--glass-bg);
   border: 1px solid var(--bd2);
   border-radius: var(--r-lg);
@@ -1541,7 +1542,8 @@ section,
 .gh-bottom-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(280px, .75fr) minmax(420px, 1.25fr);
+  margin-bottom: 14px;
 }
 
 .gh-langs-wrap,
@@ -1550,7 +1552,8 @@ section,
 }
 
 .gh-langs-title,
-.gh-contrib-title {
+.gh-contrib-title,
+.lc-panel-title {
   color: var(--tx);
   font-family: "Syne", sans-serif;
   font-size: 15px;
@@ -1623,16 +1626,15 @@ section,
 }
 
 .gh-heatmap {
-  display: flex;
+  display: grid;
   gap: 4px;
+  grid-auto-columns: 11px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 11px);
+  max-width: 100%;
   overflow-x: auto;
-  padding-bottom: 4px;
-}
-
-.gh-week {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  padding: 2px 2px 6px;
+  scrollbar-width: thin;
 }
 
 .gh-day {
@@ -1647,6 +1649,36 @@ section,
 .gh-day.l3 { background: color-mix(in srgb, var(--a) 72%, var(--bd)); }
 .gh-day.l4 { background: var(--a); box-shadow: 0 0 8px var(--a-glow); }
 
+.gh-day:hover {
+  box-shadow: 0 0 0 2px var(--a-glow);
+  transform: scale(1.15);
+}
+
+.activity-legend {
+  align-items: center;
+  color: var(--tx4);
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  gap: 6px;
+  justify-content: flex-end;
+  letter-spacing: .08em;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+.legend-dot {
+  border-radius: 2px;
+  height: 10px;
+  width: 10px;
+}
+
+.legend-dot.l0 { background: var(--bd); }
+.legend-dot.l1 { background: color-mix(in srgb, var(--a) 24%, var(--bd)); }
+.legend-dot.l2 { background: color-mix(in srgb, var(--a) 48%, var(--bd)); }
+.legend-dot.l3 { background: color-mix(in srgb, var(--a) 72%, var(--bd)); }
+.legend-dot.l4 { background: var(--a); }
+
 .gh-source-note {
   color: var(--tx4);
   font-family: "JetBrains Mono", monospace;
@@ -1656,20 +1688,20 @@ section,
 }
 
 .lc-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--bd2);
-  border-radius: var(--r-lg);
-  box-shadow: var(--sh2);
   display: grid;
-  gap: 18px;
-  grid-template-columns: 1fr auto;
+  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
   padding: 28px;
+}
+
+.lc-hero {
+  grid-column: span 4;
 }
 
 .lc-title {
   color: var(--tx);
   font-family: "Syne", sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   margin-bottom: 8px;
 }
@@ -1697,6 +1729,78 @@ section,
   letter-spacing: .08em;
   padding: 5px 10px;
   text-transform: uppercase;
+}
+
+.lc-stat {
+  background: var(--bg-input);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-sm);
+  padding: 18px;
+}
+
+.lc-stat-val {
+  color: var(--a);
+  font-family: "Syne", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.lc-stat-label {
+  color: var(--tx4);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.lc-activity,
+.lc-breakdown {
+  background: var(--bg-input);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-sm);
+  padding: 20px;
+}
+
+.lc-activity {
+  grid-column: span 3;
+}
+
+.lc-breakdown {
+  grid-column: span 1;
+}
+
+.lc-bars {
+  display: grid;
+  gap: 12px;
+}
+
+.lc-bar-row {
+  display: grid;
+  gap: 8px;
+}
+
+.lc-bar-top {
+  align-items: center;
+  color: var(--tx3);
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.lc-bar-track {
+  background: var(--bd);
+  border-radius: 999px;
+  height: 7px;
+  overflow: hidden;
+}
+
+.lc-bar-fill {
+  background: var(--a);
+  border-radius: 999px;
+  height: 100%;
 }
 
 .cert-sect {
@@ -2526,6 +2630,12 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .lc-hero,
+  .lc-activity,
+  .lc-breakdown {
+    grid-column: span 1;
+  }
+
   .po-grid {
     gap: 28px;
   }
@@ -2662,7 +2772,7 @@ footer {
   <a href="#about" onclick="cMob()">About</a>
   <a href="#skills" onclick="cMob()">Skills</a>
   <a href="#projects" onclick="cMob()">Projects</a>
-  <a href="#github" onclick="cMob()">GitHub</a>
+  <a href="#github" class="gh-nav" onclick="cMob()">GitHub</a>
   <a href="#leetcode" class="lc-nav is-hidden" onclick="cMob()">LeetCode</a>
   <a href="#certs" onclick="cMob()">Certs</a>
   <a href="#resume" onclick="cMob()">Resume</a>
@@ -2681,7 +2791,7 @@ footer {
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#github">GitHub</a></li>
+    <li><a href="#github" class="gh-nav">GitHub</a></li>
     <li><a href="#leetcode" class="lc-nav is-hidden">LeetCode</a></li>
     <li><a href="#certs">Certs</a></li>
     <li><a href="#resume">Resume</a></li>
@@ -2699,7 +2809,7 @@ footer {
   <div class="sdt" data-s="about" onclick="location.href='#about'"></div>
   <div class="sdt" data-s="skills" onclick="location.href='#skills'"></div>
   <div class="sdt" data-s="projects" onclick="location.href='#projects'"></div>
-  <div class="sdt" data-s="github" onclick="location.href='#github'"></div>
+  <div class="sdt gh-nav" data-s="github" onclick="location.href='#github'"></div>
   <div class="sdt lc-nav is-hidden" data-s="leetcode" onclick="location.href='#leetcode'"></div>
   <div class="sdt" data-s="certs" onclick="location.href='#certs'"></div>
   <div class="sdt" data-s="resume" onclick="location.href='#resume'"></div>
@@ -2808,7 +2918,7 @@ footer {
     </div>
   </div>
 </section>
-<div class="dvl"></div>
+<div class="dvl" id="github-divider"></div>
 
 <section id="leetcode" class="is-hidden">
   <div class="stag rv">Problem Solving</div>
@@ -2943,10 +3053,10 @@ function compactNumber(n) {
 }
 
 function githubUsername(source) {
-  const raw = String(source || "").trim();
+  const raw = String(source || "").trim().replace(/\/+$/, "");
   if (!raw) return "";
   const match = raw.match(/github\.com\/([^/?#]+)/i);
-  return (match ? match[1] : raw).replace(/^@/, "").replace(/\/$/, "");
+  return (match ? match[1] : raw).replace(/^@/, "").trim();
 }
 
 function leetcodeUsername(source) {
@@ -2966,6 +3076,26 @@ function daysAgoLabel(dateValue) {
   if (days < 30) return days + "d ago";
   const months = Math.floor(days / 30);
   return months + "mo ago";
+}
+
+function normalizeLevel(value, max) {
+  const n = Number(value || 0);
+  if (!n || !max) return 0;
+  const pct = n / max;
+  if (pct >= .8) return 4;
+  if (pct >= .55) return 3;
+  if (pct >= .28) return 2;
+  return 1;
+}
+
+function generatedActivity(seed, totalCells = 182) {
+  const cells = [];
+  const base = Math.max(1, Number(seed || 1));
+  for (let i = 0; i < totalCells; i++) {
+    const v = (i * 17 + base * 13 + (i % 7) * 9) % 23;
+    cells.push(v > 18 ? 4 : v > 14 ? 3 : v > 9 ? 2 : v > 5 ? 1 : 0);
+  }
+  return cells;
 }
 
 function socialItems(c) {
@@ -3005,8 +3135,8 @@ function renderGithubStats(data, sourceLabel) {
     </div>`).join("");
   updateLangColors();
 
-  const levels = data.activityLevels && data.activityLevels.length ? data.activityLevels : [1, 0, 2, 0, 3, 1, 0, 2, 4, 1, 0, 2, 3, 0, 1, 4, 2, 0, 1, 3, 2, 0, 1, 4, 2, 1];
-  document.getElementById("gh-heatmap").innerHTML = levels.slice(0, 26).map(level =>
+  const levels = data.activityLevels && data.activityLevels.length ? data.activityLevels : generatedActivity(data.repos + data.stars);
+  document.getElementById("gh-heatmap").innerHTML = levels.slice(0, 182).map(level =>
     `<div class="gh-day${level ? " l" + Math.min(4, Number(level)) : ""}" title="Public GitHub activity"></div>`
   ).join("");
 
@@ -3021,6 +3151,15 @@ function renderGithubStats(data, sourceLabel) {
 }
 
 function renderGithubFallback() {
+  const username = githubUsername(D.github?.username || D.github?.url || D.contact?.github);
+  const section = document.getElementById("github");
+  const divider = document.getElementById("github-divider");
+  const enabled = Boolean(username);
+  section.classList.toggle("is-hidden", !enabled);
+  if (divider) divider.classList.toggle("is-hidden", !enabled);
+  document.querySelectorAll(".gh-nav").forEach(el => el.classList.toggle("is-hidden", !enabled));
+  if (!enabled) return;
+
   const fb = D.github?.fallback || {};
   renderGithubStats({
     repos: fb.repos || 0,
@@ -3028,6 +3167,7 @@ function renderGithubFallback() {
     followers: fb.followers || 0,
     recentActivity: fb.recentActivity || "Loading",
     langs: fb.langs || [],
+    activityLevels: generatedActivity((fb.repos || 1) + (fb.stars || 0)),
     note: "Loading public GitHub data from the configured profile."
   }, "Loading");
 }
@@ -3035,6 +3175,15 @@ function renderGithubFallback() {
 async function refreshGithubStats() {
   const gh = D.github || {};
   const username = githubUsername(gh.username || gh.url || D.contact?.github);
+  const section = document.getElementById("github");
+  const divider = document.getElementById("github-divider");
+  const navItems = document.querySelectorAll(".gh-nav");
+  const enabled = Boolean(username);
+  section.classList.toggle("is-hidden", !enabled);
+  if (divider) divider.classList.toggle("is-hidden", !enabled);
+  navItems.forEach(el => el.classList.toggle("is-hidden", !enabled));
+  if (!enabled) return;
+
   if (!username || !window.fetch) {
     document.getElementById("gh-source-badge").textContent = "Config";
     document.getElementById("gh-source-note").textContent = "Add a GitHub username or URL in portfolio.config.js.";
@@ -3080,14 +3229,29 @@ async function refreshGithubStats() {
         color: LANG_COLORS[name] || LANG_COLORS.Other
       }));
 
-    const activityLevels = publicRepos.slice(0, 26).map(repo => {
-      const days = repo.pushed_at ? Math.floor((Date.now() - new Date(repo.pushed_at).getTime()) / 86400000) : 999;
-      if (days <= 7) return 4;
-      if (days <= 30) return 3;
-      if (days <= 90) return 2;
-      if (days <= 180) return 1;
-      return 0;
-    });
+    const eventRes = await fetch(`https://api.github.com/users/${encodeURIComponent(yugg04)}/events/public?per_page=100`);
+    const events = eventRes.ok ? await eventRes.json() : [];
+    const dayCounts = {};
+    if (Array.isArray(events)) {
+      events.forEach(event => {
+        if (!event.created_at) return;
+        const key = event.created_at.slice(0, 10);
+        dayCounts[key] = (dayCounts[key] || 0) + 1;
+      });
+    }
+    const maxCount = Math.max(1, ...Object.values(dayCounts));
+    const activityLevels = [];
+    const start = new Date();
+    start.setDate(start.getDate() - 181);
+    for (let i = 0; i < 182; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      const key = d.toISOString().slice(0, 10);
+      activityLevels.push(normalizeLevel(dayCounts[key] || 0, maxCount));
+    }
+    if (!Object.keys(dayCounts).length) {
+      activityLevels.splice(0, activityLevels.length, ...generatedActivity(user.public_repos + stars));
+    }
 
     renderGithubStats({
       repos: user.public_repos ?? publicRepos.length,
@@ -3106,9 +3270,96 @@ async function refreshGithubStats() {
       followers: fb.followers || 0,
       recentActivity: fb.recentActivity || "Public",
       langs: fb.langs || [],
+      activityLevels: generatedActivity((fb.repos || 1) + (fb.stars || 0)),
       note: "Showing configured fallback data because GitHub API data could not be loaded."
     }, "Config fallback");
   }
+}
+
+function leetcodeActivityLevels(calendar, seed) {
+  if (calendar) {
+    let parsed = calendar;
+    if (typeof calendar === "string") {
+      try { parsed = JSON.parse(calendar); } catch (err) { parsed = {}; }
+    }
+    const entries = Object.entries(parsed || {});
+    if (entries.length) {
+      const counts = {};
+      entries.forEach(([timestamp, value]) => {
+        const date = new Date(Number(timestamp) * 1000);
+        if (!Number.isFinite(date.getTime())) return;
+        counts[date.toISOString().slice(0, 10)] = Number(value || 0);
+      });
+      const maxCount = Math.max(1, ...Object.values(counts));
+      const levels = [];
+      const start = new Date();
+      start.setDate(start.getDate() - 181);
+      for (let i = 0; i < 182; i++) {
+        const d = new Date(start);
+        d.setDate(start.getDate() + i);
+        levels.push(normalizeLevel(counts[d.toISOString().slice(0, 10)] || 0, maxCount));
+      }
+      return levels;
+    }
+  }
+  return generatedActivity(seed || 7);
+}
+
+function renderLeetCodeStats(data, sourceLabel) {
+  const total = Number(data.totalSolved || 0);
+  const easy = Number(data.easySolved || 0);
+  const medium = Number(data.mediumSolved || 0);
+  const hard = Number(data.hardSolved || 0);
+  const maxSolved = Math.max(1, easy, medium, hard);
+  const levels = data.activityLevels || leetcodeActivityLevels(data.submissionCalendar, total + medium + hard);
+  const href = cleanUrl(data.url || `https://leetcode.com/${data.username}`);
+
+  document.getElementById("lc-card").innerHTML = `
+    <div class="lc-hero">
+      <div class="lc-title">${xe(data.username ? "@" + data.username : "LeetCode Profile")}</div>
+      <p class="lc-desc">Coding profile for problem solving, data structures, algorithms, contests, and interview preparation.</p>
+      <div class="lc-highlights">
+        <span class="lc-pill">${xe(sourceLabel)}</span>
+        ${data.highlights.map(item => `<span class="lc-pill">${xe(item)}</span>`).join("")}
+      </div>
+    </div>
+    <div class="lc-stat">
+      <div class="lc-stat-val">${compactNumber(total)}</div>
+      <div class="lc-stat-label">Solved Problems</div>
+    </div>
+    <div class="lc-stat">
+      <div class="lc-stat-val">${xe(String(data.streak || "-"))}</div>
+      <div class="lc-stat-label">Activity / Streak</div>
+    </div>
+    <div class="lc-stat">
+      <div class="lc-stat-val">${xe(String(data.contestRating || "-"))}</div>
+      <div class="lc-stat-label">Contest Rating</div>
+    </div>
+    <div class="lc-stat">
+      <div class="lc-stat-val">${xe(String(data.ranking || "-"))}</div>
+      <div class="lc-stat-label">Global Ranking</div>
+    </div>
+    <div class="lc-activity">
+      <div class="lc-panel-title">Activity Visualization</div>
+      <div class="gh-heatmap">${levels.slice(0, 182).map(level => `<div class="gh-day${level ? " l" + Math.min(4, Number(level)) : ""}" title="LeetCode activity"></div>`).join("")}</div>
+      <div class="activity-legend"><span>Less</span><span class="legend-dot l0"></span><span class="legend-dot l1"></span><span class="legend-dot l2"></span><span class="legend-dot l3"></span><span class="legend-dot l4"></span><span>More</span></div>
+    </div>
+    <div class="lc-breakdown">
+      <div class="lc-panel-title">Solved Breakdown</div>
+      <div class="lc-bars">
+        ${[
+          ["Easy", easy],
+          ["Medium", medium],
+          ["Hard", hard]
+        ].map(([label, value]) => `
+          <div class="lc-bar-row">
+            <div class="lc-bar-top"><span>${label}</span><span>${compactNumber(value)}</span></div>
+            <div class="lc-bar-track"><div class="lc-bar-fill" style="width:${Math.max(4, value / maxSolved * 100)}%"></div></div>
+          </div>`).join("")}
+      </div>
+    </div>
+    <a class="btn-primary" href="${xe(href)}" target="_blank" rel="noopener noreferrer"><span>Open Profile</span><span>-></span></a>
+  `;
 }
 
 function renderLeetCode() {
@@ -3122,16 +3373,74 @@ function renderLeetCode() {
   document.querySelectorAll(".lc-nav").forEach(el => el.classList.toggle("is-hidden", !enabled));
   if (!enabled) return;
 
-  const href = cleanUrl(url || `https://leetcode.com/${username}`);
-  const highlights = D.leetcode?.highlights || [];
-  card.innerHTML = `
-    <div>
-      <div class="lc-title">${xe(username ? "@" + username : "LeetCode Profile")}</div>
-      <p class="lc-desc">Problem-solving profile for coding practice, data structures, algorithms, and interview preparation.</p>
-      ${highlights.length ? `<div class="lc-highlights">${highlights.map(item => `<span class="lc-pill">${xe(item)}</span>`).join("")}</div>` : ""}
-    </div>
-    <a class="btn-primary" href="${xe(href)}" target="_blank" rel="noopener noreferrer"><span>Open Profile</span><span>-></span></a>
-  `;
+  const fb = D.leetcode?.fallback || {};
+  renderLeetCodeStats({
+    username,
+    url,
+    totalSolved: fb.totalSolved || 0,
+    easySolved: fb.easySolved || 0,
+    mediumSolved: fb.mediumSolved || 0,
+    hardSolved: fb.hardSolved || 0,
+    ranking: fb.ranking || "-",
+    acceptanceRate: fb.acceptanceRate || "-",
+    contestRating: fb.contestRating || "-",
+    streak: fb.streak || "Loading",
+    highlights: D.leetcode?.highlights || []
+  }, "Loading");
+  refreshLeetCodeStats(username, url);
+}
+
+async function refreshLeetCodeStats(username, url) {
+  if (!username || !window.fetch) return;
+  try {
+    const [statsResult, contestResult, calendarResult] = await Promise.allSettled([
+      fetch(`https://leetcode-stats-api.herokuapp.com/${encodeURIComponent(username)}`).then(res => res.ok ? res.json() : Promise.reject(new Error("stats"))),
+      fetch(`https://alfa-leetcode-api.onrender.com/${encodeURIComponent(username)}/contest`).then(res => res.ok ? res.json() : {}),
+      fetch(`https://alfa-leetcode-api.onrender.com/${encodeURIComponent(username)}/calendar`).then(res => res.ok ? res.json() : {})
+    ]);
+    const stats = statsResult.status === "fulfilled" ? statsResult.value : {};
+    const contest = contestResult.status === "fulfilled" ? contestResult.value : {};
+    const calendar = calendarResult.status === "fulfilled" ? calendarResult.value : {};
+    const calendarData = calendar.submissionCalendar || calendar.data?.matchedUser?.submissionCalendar || null;
+    const contestRating = contest.contestRating || contest.rating || contest.data?.userContestRanking?.rating;
+    const attended = contest.attendedContestsCount || contest.contestAttend || contest.data?.userContestRanking?.attendedContestsCount;
+    const totalSolved = stats.totalSolved || stats.totalQuestionsSolved || 0;
+
+    renderLeetCodeStats({
+      username,
+      url,
+      totalSolved,
+      easySolved: stats.easySolved || 0,
+      mediumSolved: stats.mediumSolved || 0,
+      hardSolved: stats.hardSolved || 0,
+      ranking: stats.ranking ? "#" + compactNumber(stats.ranking) : "-",
+      acceptanceRate: stats.acceptanceRate || "-",
+      contestRating: contestRating ? Math.round(contestRating) : "-",
+      streak: attended ? compactNumber(attended) + " contests" : daysAgoLabel(stats.lastSubmissionDate || Date.now()),
+      highlights: [
+        stats.acceptanceRate ? `${stats.acceptanceRate}% acceptance` : "",
+        attended ? `${attended} contests` : "",
+        ...(D.leetcode?.highlights || [])
+      ].filter(Boolean),
+      submissionCalendar: calendarData,
+      activityLevels: leetcodeActivityLevels(calendarData, totalSolved)
+    }, "Live profile data");
+  } catch (err) {
+    const fb = D.leetcode?.fallback || {};
+    renderLeetCodeStats({
+      username,
+      url,
+      totalSolved: fb.totalSolved || 0,
+      easySolved: fb.easySolved || 0,
+      mediumSolved: fb.mediumSolved || 0,
+      hardSolved: fb.hardSolved || 0,
+      ranking: fb.ranking || "-",
+      contestRating: fb.contestRating || "-",
+      streak: fb.streak || "Public",
+      highlights: ["Config fallback", ...(D.leetcode?.highlights || [])],
+      activityLevels: generatedActivity((fb.totalSolved || 1) + (fb.mediumSolved || 0))
+    }, "Config fallback");
+  }
 }
 
 function setTheme(t) {
