@@ -3242,100 +3242,47 @@ function renderGithubStats(data, sourceLabel) {
 // }
 
 
+
+// GitHub Heatmap
 const heatmap = document.getElementById("gh-heatmap");
 
 if (data.username) {
+
   heatmap.classList.add("chart-mode");
 
-  try {
-    const response = await fetch(
-      `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(data.username)}`
-    );
+  heatmap.innerHTML = `
+    <img
+      class="gh-chart-img"
+      src="https://ghchart.rshah.org/409ba5/${encodeURIComponent(data.username)}"
+      alt="${xe(data.username)} GitHub contribution graph"
+      loading="lazy"
+    >
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch GitHub data");
-    }
-
-    const result = await response.json();
-
-    // API structure fix
-    const weeks = result.contributions || [];
-
-    const days = weeks.flatMap(week =>
-      (week.contributions || []).map(day => ({
-        count: Number(day.count || 0),
-        date: day.date || ""
-      }))
-    );
-
-    if (!days.length) {
-      heatmap.innerHTML = `
-        <div class="gh-empty-state">
-          No GitHub activity found
-        </div>
-      `;
-    } else {
-
-      heatmap.innerHTML = `
-        <div class="gh-heatmap-grid">
-          ${days.map(day => {
-
-            let level = 0;
-
-            if (day.count >= 1 && day.count <= 2) level = 1;
-            else if (day.count <= 5) level = 2;
-            else if (day.count <= 10) level = 3;
-            else if (day.count > 10) level = 4;
-
-            return `
-              <div 
-                class="gh-day l${level}"
-                title="${day.count} contributions on ${day.date}">
-              </div>
-            `;
-          }).join("")}
-        </div>
-
-        <a 
-          class="gh-profile-link"
-          href="https://github.com/${encodeURIComponent(data.username)}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Using github.com/${data.username}
-        </a>
-      `;
-    }
-
-  } catch (error) {
-    console.error("GitHub Heatmap Error:", error);
-
-    heatmap.innerHTML = `
-      <div class="gh-empty-state">
-        Failed to load GitHub activity
-      </div>
-    `;
-  }
+    <a
+      class="gh-profile-link"
+      href="https://github.com/${xe(data.username)}"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Using github.com/${xe(data.username)}
+    </a>
+  `;
 
 } else {
 
   heatmap.classList.remove("chart-mode");
 
   const levels =
-    data.activityLevels?.length
+    data.activityLevels && data.activityLevels.length
       ? data.activityLevels
       : emptyActivity();
 
-  heatmap.innerHTML = `
-    <div class="gh-heatmap-grid">
-      ${levels.slice(0, 364).map(level => `
-        <div 
-          class="gh-day${level ? ` l${Math.min(4, Number(level))}` : ""}"
-          title="GitHub activity">
-        </div>
-      `).join("")}
-    </div>
-  `;
+  heatmap.innerHTML = levels
+    .slice(0, 182)
+    .map(level =>
+      `<div class="gh-day${level ? " l" + Math.min(4, Number(level)) : ""}" title="GitHub activity"></div>`
+    )
+    .join("");
 }
 
 document.getElementById("gh-source-badge").textContent =
@@ -3346,9 +3293,10 @@ document.getElementById("gh-source-note").textContent =
 
 requestAnimationFrame(() => {
   document.querySelectorAll(".gh-lang-bar").forEach(bar => {
-    bar.style.width = `${bar.dataset.pct}%`;
+    bar.style.width = bar.dataset.pct + "%";
   });
 });
+
 
 
 
