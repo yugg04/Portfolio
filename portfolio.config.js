@@ -151,6 +151,7 @@ window.PORTFOLIO_CONFIG = {
   github: {
     username: "yugg04",
     url: "https://github.com/yugg04",
+    chartColor: "#0284c7",
     maxLanguageRepos: 12,
     fallback: {
       repos: 12,
@@ -168,8 +169,8 @@ window.PORTFOLIO_CONFIG = {
   },
 
   leetcode: {
-    url: "",
-    username: "",
+    url: "https://leetcode.com/u/yug_209/",
+    username: "yug_209",
     highlights: [],
     fallback: {
       totalSolved: 0,
