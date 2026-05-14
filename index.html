@@ -1637,6 +1637,55 @@ section,
   scrollbar-width: thin;
 }
 
+.gh-heatmap.chart-mode {
+  background:
+    radial-gradient(circle at 18% 18%, var(--a-glow2), transparent 32%),
+    linear-gradient(135deg, var(--bg-input), color-mix(in srgb, var(--bg-input) 78%, var(--a-glow2)));
+  border: 1px solid var(--bd);
+  border-radius: var(--r-sm);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+  display: grid;
+  gap: 12px;
+  overflow: hidden;
+  padding: 14px;
+}
+
+.gh-chart-img {
+  display: block;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  width: 100%;
+}
+
+.gh-profile-link {
+  align-items: center;
+  border: 1px solid var(--bd2);
+  border-radius: 999px;
+  color: var(--a);
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  margin-top: 12px;
+  padding: 6px 12px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.activity-card-img {
+  background:
+    radial-gradient(circle at 18% 18%, var(--a-glow2), transparent 32%),
+    linear-gradient(135deg, var(--bg-input), color-mix(in srgb, var(--bg-input) 78%, var(--a-glow2)));
+  border: 1px solid var(--bd);
+  border-radius: var(--r-sm);
+  display: block;
+  height: auto;
+  padding: 12px;
+  width: 100%;
+}
+
 .gh-day {
   background: var(--bd);
   border-radius: 2px;
@@ -1757,7 +1806,9 @@ section,
 
 .lc-activity,
 .lc-breakdown {
-  background: var(--bg-input);
+  background:
+    radial-gradient(circle at 22% 16%, var(--a-glow2), transparent 34%),
+    var(--bg-input);
   border: 1px solid var(--bd);
   border-radius: var(--r-sm);
   padding: 20px;
@@ -1769,6 +1820,10 @@ section,
 
 .lc-breakdown {
   grid-column: span 1;
+}
+
+.lc-activity-card {
+  grid-column: span 4;
 }
 
 .lc-bars {
@@ -2632,6 +2687,7 @@ footer {
 
   .lc-hero,
   .lc-activity,
+  .lc-activity-card,
   .lc-breakdown {
     grid-column: span 1;
   }
@@ -3059,11 +3115,27 @@ function githubUsername(source) {
   return (match ? match[1] : raw).replace(/^@/, "").trim();
 }
 
+function githubContributionChartUrl(username) {
+  const dark = document.documentElement.dataset.theme === "dark";
+  const bg = dark ? "101820" : "f6fbff";
+  const color = dark ? "bddfec" : "264f70";
+  const line = (D.github?.chartColor || "#0284c7").replace(/^#/, "");
+  const point = dark ? "67e8f9" : "06b6d4";
+  return `https://github-readme-activity-graph.vercel.app/graph?username=${encodeURIComponent(username)}&bg_color=${bg}&color=${color}&line=${line}&point=${point}&area=true&area_color=${line}&hide_border=true&radius=8&custom_title=Overall%20GitHub%20Activity`;
+}
+
 function leetcodeUsername(source) {
   const raw = String(source || "").trim();
   if (!raw) return "";
   const match = raw.match(/leetcode\.com\/(?:u\/)?([^/?#]+)/i);
   return (match ? match[1] : raw).replace(/^@/, "").replace(/\/$/, "");
+}
+
+function leetcodeCardUrl(username) {
+  const dark = document.documentElement.dataset.theme === "dark";
+  const theme = dark ? "dark" : "light";
+  const border = (D.github?.chartColor || "#0284c7").replace(/^#/, "");
+  return `https://leetcard.jacoblin.cool/${encodeURIComponent(username)}?theme=${theme}&font=DM%20Sans&border=1&radius=8&ext=heatmap&border_color=${border}`;
 }
 
 function daysAgoLabel(dateValue) {
@@ -3076,6 +3148,12 @@ function daysAgoLabel(dateValue) {
   if (days < 30) return days + "d ago";
   const months = Math.floor(days / 30);
   return months + "mo ago";
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Request failed: " + res.status);
+  return res.json();
 }
 
 function normalizeLevel(value, max) {
@@ -3096,6 +3174,10 @@ function generatedActivity(seed, totalCells = 182) {
     cells.push(v > 18 ? 4 : v > 14 ? 3 : v > 9 ? 2 : v > 5 ? 1 : 0);
   }
   return cells;
+}
+
+function emptyActivity(totalCells = 182) {
+  return Array.from({ length: totalCells }, () => 0);
 }
 
 function socialItems(c) {
@@ -3135,10 +3217,19 @@ function renderGithubStats(data, sourceLabel) {
     </div>`).join("");
   updateLangColors();
 
-  const levels = data.activityLevels && data.activityLevels.length ? data.activityLevels : generatedActivity(data.repos + data.stars);
-  document.getElementById("gh-heatmap").innerHTML = levels.slice(0, 182).map(level =>
-    `<div class="gh-day${level ? " l" + Math.min(4, Number(level)) : ""}" title="Public GitHub activity"></div>`
-  ).join("");
+  const heatmap = document.getElementById("gh-heatmap");
+  if (data.username) {
+    heatmap.classList.add("chart-mode");
+    heatmap.innerHTML = `
+      <img class="gh-chart-img" src="${xe(githubContributionChartUrl(data.username))}" alt="${xe(data.username)} GitHub contribution graph" loading="lazy">
+      <a class="gh-profile-link" href="https://github.com/${xe(data.username)}" target="_blank" rel="noopener noreferrer">Using github.com/${xe(data.username)}</a>`;
+  } else {
+    heatmap.classList.remove("chart-mode");
+    const levels = data.activityLevels && data.activityLevels.length ? data.activityLevels : emptyActivity();
+    heatmap.innerHTML = levels.slice(0, 182).map(level =>
+      `<div class="gh-day${level ? " l" + Math.min(4, Number(level)) : ""}" title="GitHub activity"></div>`
+    ).join("");
+  }
 
   document.getElementById("gh-source-badge").textContent = sourceLabel;
   document.getElementById("gh-source-note").textContent = data.note || "Public GitHub data, refreshed in the browser.";
@@ -3167,9 +3258,10 @@ function renderGithubFallback() {
     followers: fb.followers || 0,
     recentActivity: fb.recentActivity || "Loading",
     langs: fb.langs || [],
-    activityLevels: generatedActivity((fb.repos || 1) + (fb.stars || 0)),
-    note: "Loading public GitHub data from the configured profile."
-  }, "Loading");
+    username,
+    activityLevels: emptyActivity(),
+    note: "Overall contribution graph is generated from the configured GitHub profile."
+  }, "Overall Contributions");
 }
 
 async function refreshGithubStats() {
@@ -3191,14 +3283,10 @@ async function refreshGithubStats() {
   }
 
   try {
-    const [userRes, reposRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${encodeURIComponent(username)}`),
-      fetch(`https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`)
+    const [user, repos] = await Promise.all([
+      fetchJson(`https://api.github.com/users/${encodeURIComponent(username)}`),
+      fetchJson(`https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`)
     ]);
-    if (!userRes.ok || !reposRes.ok) throw new Error("GitHub API unavailable");
-
-    const user = await userRes.json();
-    const repos = await reposRes.json();
     const publicRepos = Array.isArray(repos) ? repos : [];
     const nonForkRepos = publicRepos.filter(repo => !repo.fork);
     const stars = publicRepos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
@@ -3229,39 +3317,15 @@ async function refreshGithubStats() {
         color: LANG_COLORS[name] || LANG_COLORS.Other
       }));
 
-    const eventRes = await fetch(`https://api.github.com/users/${encodeURIComponent(yugg04)}/events/public?per_page=100`);
-    const events = eventRes.ok ? await eventRes.json() : [];
-    const dayCounts = {};
-    if (Array.isArray(events)) {
-      events.forEach(event => {
-        if (!event.created_at) return;
-        const key = event.created_at.slice(0, 10);
-        dayCounts[key] = (dayCounts[key] || 0) + 1;
-      });
-    }
-    const maxCount = Math.max(1, ...Object.values(dayCounts));
-    const activityLevels = [];
-    const start = new Date();
-    start.setDate(start.getDate() - 181);
-    for (let i = 0; i < 182; i++) {
-      const d = new Date(start);
-      d.setDate(start.getDate() + i);
-      const key = d.toISOString().slice(0, 10);
-      activityLevels.push(normalizeLevel(dayCounts[key] || 0, maxCount));
-    }
-    if (!Object.keys(dayCounts).length) {
-      activityLevels.splice(0, activityLevels.length, ...generatedActivity(user.public_repos + stars));
-    }
-
     renderGithubStats({
       repos: user.public_repos ?? publicRepos.length,
       stars,
       followers: user.followers || 0,
       recentActivity: daysAgoLabel(recentRepoDate || user.updated_at),
       langs,
-      activityLevels,
-      note: `Live public GitHub data for @${username}.`
-    }, "Live GitHub API");
+      username,
+      note: `Overall contribution graph for @${username}. Stats update from the GitHub public API.`
+    }, "Overall Contributions");
   } catch (err) {
     const fb = D.github?.fallback || {};
     renderGithubStats({
@@ -3270,9 +3334,10 @@ async function refreshGithubStats() {
       followers: fb.followers || 0,
       recentActivity: fb.recentActivity || "Public",
       langs: fb.langs || [],
-      activityLevels: generatedActivity((fb.repos || 1) + (fb.stars || 0)),
-      note: "Showing configured fallback data because GitHub API data could not be loaded."
-    }, "Config fallback");
+      username,
+      activityLevels: emptyActivity(),
+      note: `Overall contribution graph for @${username}. Numeric stats are using configured fallback values because GitHub API stats could not be loaded.`
+    }, "Overall Contributions");
   }
 }
 
@@ -3358,6 +3423,11 @@ function renderLeetCodeStats(data, sourceLabel) {
           </div>`).join("")}
       </div>
     </div>
+    ${data.username ? `
+    <div class="lc-activity-card">
+      <div class="lc-panel-title">LeetCode Activity Card</div>
+      <img class="activity-card-img lc-profile-card-img" src="${xe(leetcodeCardUrl(data.username))}" alt="${xe(data.username)} LeetCode activity card" loading="lazy">
+    </div>` : ""}
     <a class="btn-primary" href="${xe(href)}" target="_blank" rel="noopener noreferrer"><span>Open Profile</span><span>-></span></a>
   `;
 }
@@ -3451,6 +3521,12 @@ function setTheme(t) {
     el.classList.toggle("active", el.dataset.t === theme);
   });
   updateLangColors();
+  const ghUsername = githubUsername(D.github?.username || D.github?.url || D.contact?.github);
+  const ghChart = document.querySelector(".gh-chart-img");
+  if (ghUsername && ghChart) ghChart.src = githubContributionChartUrl(ghUsername);
+  const lcUsername = leetcodeUsername(D.leetcode?.username || D.leetcode?.url || D.contact?.leetcode);
+  const lcCard = document.querySelector(".lc-profile-card-img");
+  if (lcUsername && lcCard) lcCard.src = leetcodeCardUrl(lcUsername);
 }
 
 function updateLangColors() {
