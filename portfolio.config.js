@@ -139,7 +139,7 @@ window.PORTFOLIO_CONFIG = {
     email: "yugkhatri209@gmail.com",
     linkedin: "https://www.linkedin.com/in/yug-khatri-a99b49306/",
     github: "https://github.com/yugg04",
-    twitter: "",
+    twitter: "https://x.com/yug_209?s=21",
     leetcode: "",
     huggingface: "",
     location: "Gandhinagar, Gujarat, India",
@@ -169,8 +169,8 @@ window.PORTFOLIO_CONFIG = {
   },
 
   leetcode: {
-    url: "https://leetcode.com/u/yug_209/",
-    username: "yug_209",
+    url: "",
+    username: "",
     highlights: [],
     fallback: {
       totalSolved: 0,
