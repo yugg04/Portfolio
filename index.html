@@ -3241,7 +3241,6 @@ function renderGithubStats(data, sourceLabel) {
 //   });
 // }
 
-js id="3e3e3n"
 const heatmap = document.getElementById("gh-heatmap");
 
 if (data.username) {
@@ -3254,50 +3253,49 @@ if (data.username) {
 
     const result = await response.json();
 
-    if (result.contributions && result.contributions.length) {
+    // FIXED DATA EXTRACTION
+    const weeks = result.contributions || [];
 
-      const days = result.contributions.flatMap(
-        week => week.contributions
-      );
+    const days = weeks.flatMap(week =>
+      (week.contributions || []).map(day => ({
+        count: day.count || 0,
+        date: day.date || ""
+      }))
+    );
 
-      heatmap.innerHTML = `
-        <div class="gh-heatmap-grid">
-          ${days.map(day => {
-            const count = day.count || 0;
-
-            let level = 0;
-
-            if (count > 0 && count <= 2) level = 1;
-            else if (count <= 5) level = 2;
-            else if (count <= 10) level = 3;
-            else if (count > 10) level = 4;
-
-            return `
-              <div 
-                class="gh-day l${level}"
-                title="${count} contributions on ${day.date}">
-              </div>
-            `;
-          }).join("")}
-        </div>
-
-        <a 
-          class="gh-profile-link"
-          href="https://github.com/${xe(data.username)}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          github.com/${xe(data.username)}
-        </a>
-      `;
-
-    } else {
-      heatmap.innerHTML = `
-        <div class="gh-empty-state">
-          No GitHub activity found
-        </div>
-      `;
+    if (!days.length) {
+      throw new Error("No contribution data");
     }
+
+    heatmap.innerHTML = `
+      <div class="gh-heatmap-grid">
+        ${days.map(day => {
+
+          let level = 0;
+
+          if (day.count > 0 && day.count <= 2) level = 1;
+          else if (day.count <= 5) level = 2;
+          else if (day.count <= 10) level = 3;
+          else if (day.count > 10) level = 4;
+
+          return `
+            <div
+              class="gh-day l${level}"
+              title="${day.count} contributions on ${day.date}">
+            </div>
+          `;
+        }).join("")}
+      </div>
+
+      <a
+        class="gh-profile-link"
+        href="https://github.com/${xe(data.username)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Using github.com/${xe(data.username)}
+      </a>
+    `;
 
   } catch (error) {
     console.error("GitHub Heatmap Error:", error);
@@ -3320,7 +3318,7 @@ if (data.username) {
   heatmap.innerHTML = `
     <div class="gh-heatmap-grid">
       ${levels.slice(0, 364).map(level => `
-        <div 
+        <div
           class="gh-day${level ? ` l${Math.min(4, Number(level))}` : ""}"
           title="GitHub activity">
         </div>
