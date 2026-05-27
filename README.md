@@ -1,94 +1,110 @@
-
-
 # 🎨 Yug Khatri - Portfolio
 
-A modern, responsive portfolio website showcasing work as an **AI/ML Developer** and **Python Developer**. Built with a clean structure and easy customization.
+A modern and responsive portfolio website built to showcase projects, skills, certifications, and experience as an **AI/ML Developer** and **Python Developer**.
+
+Designed with a clean dark UI, lightweight structure, and simple customization system.
 
 ---
 
 ## 🌐 Live Demo
 
-[![Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-7c3aed?style=for-the-badge\&logo=vercel\&logoColor=white)](https://yugkhatri04.vercel.app/)
+Visit Portfolio: [https://yugkhatri04.vercel.app/](https://yugkhatri04.vercel.app/)
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-* Modern Dark Theme – Clean UI
-* Fully Responsive – Mobile, tablet, desktop
-* Simple Structure – Easy to understand
-* JSON-Based Content – Update from one place
-* Fast Loading – No heavy frameworks
-* Smooth Navigation
+* Modern Dark Theme UI
+* Fully Responsive Design
+* Fast Loading Performance
+* Smooth Navigation Experience
+* Single File Architecture
+* Easy Customization
+* JSON-Based Content Management
+* Mobile Friendly Layout
+* Clean and Minimal Design
+* Beginner Friendly Structure
 
 ---
 
-## 🎯 Sections
+# 🎯 Portfolio Sections
 
 * Home
-* Profile Summary
+* About / Profile Summary
 * Skills
-* Experience
+* Experience Timeline
 * Certifications
-* Contact
+* Contact Information
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```bash
 portfolio/
 │
-├── index.html        # Main file (HTML + CSS + JS)
-├── README.md         # Documentation
+├── index.html          # Main portfolio file
+├── portfolio.config.js # Portfolio data/configuration
+└── README.md           # Documentation
 ```
 
 ---
 
-## 🚀 Quick Start
+# 🚀 Quick Start
 
-### 1. Clone Repository
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/portfolio
+git clone https://github.com/your-username/portfolio.git
 cd portfolio
 ```
 
-### 2. Run Locally
+## 2. Run Locally
 
-* Open `index.html` in browser
-* No installation needed
+Simply open:
+
+```bash
+index.html
+```
+
+in your browser.
+
+No installation or dependencies required.
 
 ---
 
-## ✏️ Customization Guide
+# ⚙️ Customization Guide
 
-👉 All content is stored inside a single JavaScript object
-(`portfolio-data` in your file).
-You only need to edit that section.
+All portfolio content is managed from:
+
+```bash
+portfolio.config.js
+```
+
+You can easily update text, skills, experience, certifications, and contact information from a single place.
 
 ---
 
-### 🔹 1. Update Profile Info
+## 🔹 Update Profile Information
 
 ```js
 const PROFILE = {
   name: "Your Name",
   field: "Your Role",
-  tagline: "Your short description"
+  tagline: "Short Description"
 };
 ```
 
 ---
 
-### 🔹 2. Update Overview / Focus
+## 🔹 Update Overview / Focus Areas
 
 ```js
 const OVERVIEW = {
-  loc: "Your Location",
+  location: "Your Location",
   focus: [
     {
-      title: "Your Skill Area",
+      title: "Skill Area",
       desc: "Description"
     }
   ]
@@ -97,92 +113,117 @@ const OVERVIEW = {
 
 ---
 
-### 🔹 3. Update Skills
+## 🔹 Update Skills
 
 ```js
 const SKILLS = [
-  { name: "Python", cat: "py" },
-  { name: "Machine Learning", cat: "ai" }
+  { name: "Python", category: "backend" },
+  { name: "Machine Learning", category: "ai" },
+  { name: "Generative AI", category: "genai" }
 ];
 ```
 
 ---
 
-### 🔹 4. Update Experience / Timeline
+## 🔹 Update Experience Timeline
 
 ```js
-timeline: [
+const TIMELINE = [
   {
-    yr: "2026",
-    title: "Your Role",
-    sub: "Company Name",
-    tag: "Experience"
+    year: "2026",
+    title: "AI Developer Intern",
+    company: "Company Name",
+    type: "Internship"
   }
-]
+];
 ```
 
 ---
 
-### 🔹 5. Update Certifications
+## 🔹 Update Certifications
 
 ```js
-const CERTS = [
+const CERTIFICATIONS = [
   {
     name: "Certification Name",
     issuer: "Organization",
-    date: "Year"
+    year: "2026"
   }
 ];
 ```
 
 ---
 
-### 🔹 6. Update Contact Info
+## 🔹 Update Contact Information
 
 ```js
 const CONTACT = {
   email: "your@email.com",
-  linkedin: "your-link",
-  github: "your-github",
+  github: "your-github-link",
+  linkedin: "your-linkedin-link",
   location: "Your City"
 };
 ```
 
 ---
 
-## 📱 Responsive Design
+# 📱 Responsive Design
 
-* Desktop: 1200px+
-* Tablet: 768px – 1199px
-* Mobile: <768px
-
----
-
-## ⚡ Performance
-
-* Lightweight
-* No frameworks
-* Fast loading
-* Easy maintenance
+| Device  | Resolution     |
+| ------- | -------------- |
+| Desktop | 1200px+        |
+| Tablet  | 768px - 1199px |
+| Mobile  | Below 768px    |
 
 ---
 
-## 📄 License
+# ⚡ Performance
 
-Free for personal and educational use.
-
----
-
-## 👤 Author
-
-Yug Khatri
+* Lightweight Architecture
+* No Heavy Frameworks
+* Optimized Loading Speed
+* Minimal Dependencies
+* Easy Maintenance
 
 ---
 
-## 🙏 Acknowledgments
+# 🛠️ Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* Vercel Deployment
+* Google Fonts
+
+---
+
+# 📦 Deployment
+
+This portfolio can be deployed easily on:
+
+* Vercel
+* Netlify
+* GitHub Pages
+
+---
+
+# 📄 License
+
+This project is free for personal and educational use.
+
+---
+
+# 👨‍💻 Author
+
+**Yug Khatri**
+
+AI/ML Developer | Python Developer
+
+---
+
+# 🙏 Acknowledgments
 
 * Google Fonts
 * Vercel
-* Open-source community
-
-
+* Open Source Community
+* Developer Community
