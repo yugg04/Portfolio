@@ -8,9 +8,7 @@ Designed with a clean dark UI, lightweight structure, and simple customization s
 
 ## 🌐 Live Demo
 
-Visit Portfolio: [https://yugkhatri04.vercel.app/](https://yugkhatri04.vercel.app/)
-
----
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20Portfolio-7c3aed?style=for-the-badge&logo=vercel&logoColor=white)](https://yugkhatri04.vercel.app/)
 
 # ✨ Features
 
