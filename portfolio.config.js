@@ -29,7 +29,7 @@ window.PORTFOLIO_CONFIG = {
     ],
     showTimeline: true,
     timeline: [
-  { yr: "2026", title: "AI & ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows and projects", tag: "Experience" },
+  { yr: "2026", title: "AI/ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows and projects", tag: "Experience" },
   { yr: "2026", title: "AI/ML Intern", sub: "Xipra Technology | Built and evaluated machine learning applications", tag: "Experience" }
 ]
   },
@@ -156,7 +156,7 @@ window.PORTFOLIO_CONFIG = {
     huggingface: "",
     location: "Gandhinagar, Gujarat, India",
     intro: "Whether it is an internship, AI collaboration, or a conversation about technology, I would love to hear from you.",
-    resumeUrl: "https://drive.google.com/file/d/16e8OpQ2XjAeAp33sIj_NteC_Pw6Quo9A/view?usp=sharing",
+    resumeUrl: "https://drive.google.com/file/d/1mw4yNkEcQTjggmCGRiSAYy8RIkQpuNAj/view?usp=sharing",
     resumeLabel: "Download Resume"
   },
 
