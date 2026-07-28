@@ -29,8 +29,9 @@ window.PORTFOLIO_CONFIG = {
     ],
     showTimeline: true,
     timeline: [
-      { yr: "2026", title: "AI & ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows and projects", tag: "Experience" }
-    ]
+  { yr: "2026", title: "AI & ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows and projects", tag: "Experience" },
+  { yr: "2026", title: "AI/ML Intern", sub: "Xipra Technology | Built and evaluated machine learning applications", tag: "Experience" }
+]
   },
 
   projects: [
@@ -126,13 +127,24 @@ window.PORTFOLIO_CONFIG = {
     { name: "MySQL", cat: "db" },
     { name: "Docker", cat: "tools" },
     { name: "Git", cat: "tools" },
-    { name: "GitHub", cat: "tools" }
+    { name: "GitHub", cat: "tools" },
+    { name: "LLMs", cat: "ai" },
+    { name: "Prompt Engineering", cat: "ai" },
+    { name: "AI Agents", cat: "ai" },
+    { name: "LangGraph", cat: "ai" },
+    { name: "RAG", cat: "ai" },
+    { name: "Vector Databases", cat: "ai" },
+    { name: "SQL", cat: "py" },
+    { name: "PostgreSQL", cat: "db" },
+    { name: "Postman", cat: "tools" }
   ],
 
   certs: [
     { icon: "NPTEL", name: "Python for Data Science", issuer: "NPTEL", date: "2025", url: "", verified: true },
     { icon: "IBM", name: "Artificial Intelligence Fundamentals", issuer: "IBM", date: "2026", url: "", verified: true },
-    { icon: "AICTE", name: "AI & ML Internship", issuer: "AICTE / Edunet Foundation", date: "2026", url: "", verified: true }
+    { icon: "AICTE", name: "AI & ML Internship", issuer: "AICTE / Edunet Foundation", date: "2026", url: "", verified: true },
+    { icon: "IBM", name: "Getting Started with Artificial Intelligence", issuer: "IBM SkillsBuild", date: "2026", url: "https://www.credly.com/badges/514f0618-7316-4d49-8f22-e9dce9b275ee", verified: true },
+    { icon: "CodeWithHarry", name: "The Ultimate Job Ready Data Science Course", issuer: "CodeWithHarry", date: "2025", url: "", verified: true }
   ],
 
   contact: {
@@ -144,7 +156,7 @@ window.PORTFOLIO_CONFIG = {
     huggingface: "",
     location: "Gandhinagar, Gujarat, India",
     intro: "Whether it is an internship, AI collaboration, or a conversation about technology, I would love to hear from you.",
-    resumeUrl: "https://drive.google.com/file/d/1aK94hKlMO3qf3zzTJCUepkVTHt9qI2wE/view?usp=sharing",
+    resumeUrl: "https://drive.google.com/file/d/16e8OpQ2XjAeAp33sIj_NteC_Pw6Quo9A/view?usp=sharing",
     resumeLabel: "Download Resume"
   },
 
