@@ -1122,9 +1122,6 @@ transition-duration: .001ms !important;
 <div class="bg-glow"></div>
 <div class="bg-glow2"></div>
 <div class="bg-vg"></div>
-<div id="spotlight"></div>
-<div id="cdot"></div>
-<div id="cring"></div>
 <div id="sp"></div>
 <div id="notif"></div>
 
@@ -1824,27 +1821,6 @@ el.style.opacity = "1"; el.style.transform = "translateY(0)";
 }, 220);
 }, 4200);
 
-(function cursor() {
-  const dot  = document.getElementById("cdot");
-  const ring = document.getElementById("cring");
-  const spot = document.getElementById("spotlight");
-  if (!dot || window.matchMedia("(max-width: 960px)").matches) return;
-  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
-  addEventListener("mousemove", e => {
-    mx = e.clientX; my = e.clientY;
-    spot.style.left = mx + "px"; spot.style.top = my + "px";
-  }, { passive: true });
-  (function loop() {
-    dot.style.left = mx + "px"; dot.style.top = my + "px";
-    rx += (mx - rx) * .12; ry += (my - ry) * .12;
-    ring.style.left = rx + "px"; ring.style.top = ry + "px";
-    requestAnimationFrame(loop);
-  })();
-  document.querySelectorAll("a,button,.pcard,.sk-pill,.poc,.cc-card,.clk,.rdl,.pof,.pt-item,.cf2-input,.cf2-textarea,.gh-heatmap-card,.lc-heatmap-card").forEach(el => {
-    el.addEventListener("mouseenter", () => { dot.classList.add("hov"); ring.classList.add("hov"); });
-    el.addEventListener("mouseleave", () => { dot.classList.remove("hov"); ring.classList.remove("hov"); });
-  });
-})();
 
 document.getElementById("ham").addEventListener("click", function() {
 this.classList.toggle("op");
