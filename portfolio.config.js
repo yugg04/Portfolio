@@ -170,7 +170,7 @@ window.PORTFOLIO_CONFIG = {
     linkedin: "https://www.linkedin.com/in/yug-khatri-a99b49306/",
     github: "https://github.com/yugg04",
     twitter: "https://x.com/yug_209?s=21",
-    leetcode: "",
+    leetcode: "https://leetcode.com/u/yug_209/",
     huggingface: "",
     location: "Gandhinagar, Gujarat, India",
     intro: "Whether it is an internship, AI collaboration, or a conversation about technology, I would love to hear from you.",
