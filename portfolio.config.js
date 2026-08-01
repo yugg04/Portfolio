@@ -156,12 +156,14 @@ window.PORTFOLIO_CONFIG = {
   ],
 
   certs: [
-    { icon: "NPTEL", name: "Python for Data Science", issuer: "NPTEL", date: "2025", url: "", verified: true },
-    { icon: "IBM", name: "Artificial Intelligence Fundamentals", issuer: "IBM", date: "2026", url: "", verified: true },
-    { icon: "AICTE", name: "AI & ML Internship", issuer: "AICTE / Edunet Foundation", date: "2026", url: "", verified: true },
-    { icon: "IBM", name: "Getting Started with Artificial Intelligence", issuer: "IBM SkillsBuild", date: "2026", url: "https://www.credly.com/badges/514f0618-7316-4d49-8f22-e9dce9b275ee", verified: true },
-    { icon: "CodeWithHarry", name: "The Ultimate Job Ready Data Science Course", issuer: "CodeWithHarry", date: "2025", url: "", verified: true }
-  ],
+  { icon: "NPTEL", name: "Python for Data Science", issuer: "NPTEL", date: "2025", url: "", verified: true },
+  { icon: "IBM", name: "Artificial Intelligence Fundamentals", issuer: "IBM", date: "2026", url: "", verified: true },
+  { icon: "AICTE", name: "AI & ML Internship", issuer: "AICTE / Edunet Foundation", date: "2026", url: "", verified: true },
+  { icon: "IBM", name: "Getting Started with Artificial Intelligence", issuer: "IBM SkillsBuild", date: "2026", url: "https://www.credly.com/badges/514f0618-7316-4d49-8f22-e9dce9b275ee", verified: true },
+  { icon: "Synent", name: "Data Science Internship", issuer: "Synent Technologies", date: "2026", url: "", verified: true },
+  { icon: "AICTE", name: "Emerging Technologies Internship", issuer: "Edunet Foundation × IBM SkillsBuild", date: "2026", url: "", verified: true },
+  { icon: "CodeWithHarry", name: "The Ultimate Job Ready Data Science Course", issuer: "CodeWithHarry", date: "2025", url: "", verified: true }
+],
 
   contact: {
     email: "yugkhatri209@gmail.com",
