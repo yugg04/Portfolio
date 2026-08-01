@@ -30,9 +30,12 @@
   --tx2: #264f70;
   --tx3: #587891;
   --tx4: #88a7bc;
-  --a: #0284c7;
-  --a2: #0891d1;
-  --a3: #06b6d4;
+  --a: #0f7ae5;
+  --a2: #2ea7ff;
+  --a3: #67d3ff;
+  --a-glow: rgba(15,122,229,.18);
+  --a-glow2: rgba(46,167,255,.10);
+  --a-glow3: rgba(103,211,255,.06);
   --a-rgb: 2, 132, 199;
   --cyan-rgb: 6, 182, 212;
   --a-glow: rgba(2, 132, 199, .14);
@@ -117,9 +120,14 @@ html { scroll-behavior: smooth; }
 
 body {
   background:
-    radial-gradient(circle at 18% 12%, rgba(var(--cyan-rgb), .13), transparent 32rem),
-    radial-gradient(circle at 88% 8%, rgba(var(--a-rgb), .11), transparent 28rem),
-    linear-gradient(180deg, var(--bg), var(--bg-alt) 54%, var(--bg));
+  radial-gradient(circle at 15% 10%, rgba(15,122,229,.10), transparent 34rem),
+radial-gradient(circle at 90% 5%, rgba(103,211,255,.10), transparent 28rem),
+linear-gradient(
+180deg,
+#fcfeff 0%,
+#f6fbff 55%,
+#eef8ff 100%
+);
   color: var(--tx);
   cursor: auto;
   font-family: "DM Sans", system-ui, sans-serif;
