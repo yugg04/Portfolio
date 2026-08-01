@@ -181,7 +181,7 @@ window.PORTFOLIO_CONFIG = {
   },
 
   leetcode: {
-    url: "",
+    url: "https://leetcode.com/u/yug_209/",
     username: "",
     highlights: [],
     fallback: {
