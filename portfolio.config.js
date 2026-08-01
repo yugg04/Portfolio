@@ -28,9 +28,25 @@ window.PORTFOLIO_CONFIG = {
       { icon: "AI", title: "Generative AI", desc: "LLMs, RAG pipelines, prompt engineering, and AI-powered applications." }
     ],
     showTimeline: true,
-    timeline: [
-  { yr: "2026", title: "AI/ML Intern", sub: "AICTE / Edunet | Hands-on ML workflows and projects", tag: "Experience" },
-  { yr: "2026", title: "AI/ML Intern", sub: "Xipra Technology | Built and evaluated machine learning applications", tag: "Experience" }
+  timeline: [
+  {
+    yr: "2026",
+    title: "Data Science Intern",
+    sub: "Synent Technologies | Worked on data science and development projects",
+    tag: "Experience"
+  },
+  {
+    yr: "2026",
+    title: "AI/ML Intern",
+    sub: "AICTE / Edunet | Emerging Technologies (Agentic AI, Cyber Security & Quantum Computing)",
+    tag: "Experience"
+  },
+  {
+    yr: "2026",
+    title: "AI/ML Intern",
+    sub: "Xipra Technology | Built and evaluated machine learning applications",
+    tag: "Experience"
+  }
 ]
   },
 
