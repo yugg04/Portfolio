@@ -121,7 +121,7 @@ body {
     radial-gradient(circle at 88% 8%, rgba(var(--a-rgb), .11), transparent 28rem),
     linear-gradient(180deg, var(--bg), var(--bg-alt) 54%, var(--bg));
   color: var(--tx);
-  cursor: none;
+  cursor: auto;
   font-family: "DM Sans", system-ui, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -170,30 +170,6 @@ img { display: block; max-width: 100%; }
 [data-theme="dark"] .bg-vg {
   background: radial-gradient(ellipse 85% 76% at 50% 48%, transparent 32%, rgba(0,0,0,.28));
 }
-
-#cdot, #cring {
-  border-radius: 50%; pointer-events: none; position: fixed;
-  transform: translate(-50%, -50%);
-}
-#cdot {
-  background: var(--a); box-shadow: 0 0 18px rgba(var(--a-rgb),.28);
-  height: 7px; width: 7px; z-index: 9999;
-  transition: height .14s, width .14s, background .18s, opacity .18s;
-}
-#cring {
-  border: 1px solid rgba(var(--a-rgb),.34); height: 34px; width: 34px; z-index: 9998;
-  transition: height .24s var(--ease), width .24s var(--ease), border-color .18s, opacity .18s;
-}
-#cdot.hov { background: var(--a3); height: 11px; width: 11px; }
-#cring.hov { border-color: rgba(var(--a-rgb),.54); height: 48px; width: 48px; }
-
-#spotlight {
-  background: radial-gradient(circle, rgba(var(--a-rgb),.045), transparent 66%);
-  border-radius: 50%; height: 360px; opacity: 0;
-  transform: translate(-50%,-50%); transition: opacity .34s;
-  width: 360px; z-index: 2;
-}
-body:hover #spotlight { opacity: 1; }
 
 #sp {
   background: linear-gradient(90deg, var(--a), var(--a3));
@@ -1122,9 +1098,6 @@ footer {
 <div class="bg-glow"></div>
 <div class="bg-glow2"></div>
 <div class="bg-vg"></div>
-<div id="spotlight"></div>
-<div id="cdot"></div>
-<div id="cring"></div>
 <div id="sp"></div>
 <div id="notif"></div>
 
@@ -1823,28 +1796,6 @@ setInterval(() => {
     el.style.opacity = "1"; el.style.transform = "translateY(0)";
   }, 220);
 }, 4200);
-
-(function cursor() {
-  const dot  = document.getElementById("cdot");
-  const ring = document.getElementById("cring");
-  const spot = document.getElementById("spotlight");
-  if (!dot || window.matchMedia("(max-width: 960px)").matches) return;
-  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
-  addEventListener("mousemove", e => {
-    mx = e.clientX; my = e.clientY;
-    spot.style.left = mx + "px"; spot.style.top = my + "px";
-  }, { passive: true });
-  (function loop() {
-    dot.style.left = mx + "px"; dot.style.top = my + "px";
-    rx += (mx - rx) * .12; ry += (my - ry) * .12;
-    ring.style.left = rx + "px"; ring.style.top = ry + "px";
-    requestAnimationFrame(loop);
-  })();
-  document.querySelectorAll("a,button,.pcard,.sk-pill,.poc,.cc-card,.clk,.rdl,.pof,.pt-item,.cf2-input,.cf2-textarea,.gh-heatmap-card,.lc-heatmap-card").forEach(el => {
-    el.addEventListener("mouseenter", () => { dot.classList.add("hov"); ring.classList.add("hov"); });
-    el.addEventListener("mouseleave", () => { dot.classList.remove("hov"); ring.classList.remove("hov"); });
-  });
-})();
 
 document.getElementById("ham").addEventListener("click", function() {
   this.classList.toggle("op");
